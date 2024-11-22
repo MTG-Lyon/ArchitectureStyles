@@ -8,3 +8,5 @@ public class ListAllEventsUseCase(IEventRepository eventRepository) : IListAllEv
     public async Task<IReadOnlyCollection<EventListItemDto>> ListAll() =>
         await eventRepository.GetAll();
 }
+
+public record EventListItemDto(string Name);

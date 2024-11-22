@@ -23,4 +23,7 @@ public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
         await dbContext.Events
             .Select(x => new EventListItemDto(x.Id,x.Name))
             .ToListAsync();
+
+    public async Task<bool> Exists(string eventName) =>
+        await dbContext.Events.AnyAsync(x => x.Name == eventName);
 }

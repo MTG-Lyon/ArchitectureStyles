@@ -8,10 +8,17 @@ internal class CreateNewEventUseCase(
     IEventRepository eventRepository
 ) : ICreateNewEventUseCase
 {
-    public Task Execute(string name)
+    public async Task Execute(string name)
     {
+        if(await eventRepository.Exists(name))
+        {
+            throw new EventWithSameNameAlreadyExistsException("The event name is already taken");
+        }
+        
         var @event = new Event(new EventName(name));
 
-        return eventRepository.Save(@event);
+        await eventRepository.Save(@event);
     }
 }
+
+public class EventWithSameNameAlreadyExistsException(string message) : Exception(message);

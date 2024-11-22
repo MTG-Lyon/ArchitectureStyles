@@ -12,12 +12,16 @@ public class Controller(UseCase useCase) : ControllerBase
     {
         try
         {
-            await useCase.Execute(body.Name);
+            await useCase.CreateNewEvent(body.Name);
             return Ok();
+        }
+        catch (EventWithSameNameAlreadyExistsException e)
+        {
+            return Problem(statusCode: 403, title: e.Message);
         }
         catch (ArgumentException e)
         {
-            return BadRequest(e.Message);
+            return Problem(statusCode: 403, title: e.Message);
         }
     }
 }

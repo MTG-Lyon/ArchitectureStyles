@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddProblemDetails();
 
 builder.Services
     .RegisterUserCases()
@@ -31,35 +32,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
-
 app.UseHttpsRedirection();
-
-// app.MapPost("/events", async (
-//         [FromServices] ICreateNewEventUseCase useCase,
-//         [FromBody] CreateNewEventBody body
-//     )
-//     =>
-// {
-//     try
-//     {
-//         await useCase.Execute(body.Name);
-//         return Results.Ok();
-//     }
-//     catch (ArgumentException e)
-//     {
-//         return Results.Problem(statusCode: 400, title: e.Message);
-//     }
-// });
-//
-// app.MapGet("/events", async (IListAllEventsUseCase useCase) => Results.Ok((object?)await useCase.ListAll()));
 
 app.Run();
 
 namespace Eventify.VerticalSliced.Api
 {
-    
-
-    public class Program
-    {
-    }
+    public class Program;
 }

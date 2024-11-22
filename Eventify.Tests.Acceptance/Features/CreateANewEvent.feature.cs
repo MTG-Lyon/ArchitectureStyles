@@ -125,15 +125,17 @@ this.ScenarioInitialize(scenarioInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Created event is listed")]
+        [Xunit.SkippableFactAttribute(DisplayName="Cannot create an event with a name that is already taken")]
         [Xunit.TraitAttribute("FeatureTitle", "Create a new event")]
-        [Xunit.TraitAttribute("Description", "Created event is listed")]
-        public async System.Threading.Tasks.Task CreatedEventIsListed()
+        [Xunit.TraitAttribute("Description", "Cannot create an event with a name that is already taken")]
+        [Xunit.TraitAttribute("Category", "ErrorHandling")]
+        public async System.Threading.Tasks.Task CannotCreateAnEventWithANameThatIsAlreadyTaken()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "ErrorHandling"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Created event is listed", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 15
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Cannot create an event with a name that is already taken", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 16
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -143,14 +145,45 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 16
+#line 17
+    await testRunner.WhenAsync("I create a new event \"Software Maintenance Costs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 18
+    await testRunner.AndAsync("I create a new event \"Software Maintenance Costs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 19
+    await testRunner.ThenAsync("a forbidden error occurred with message \"The event name is already taken\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Created event is listed")]
+        [Xunit.TraitAttribute("FeatureTitle", "Create a new event")]
+        [Xunit.TraitAttribute("Description", "Created event is listed")]
+        public async System.Threading.Tasks.Task CreatedEventIsListed()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Created event is listed", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 21
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 22
     await testRunner.WhenAsync("I create a new event \"Software Maintenance Costs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
                 global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
                             "Name"});
                 table1.AddRow(new string[] {
                             "Software Maintenance Costs"});
-#line 17
+#line 23
     await testRunner.ThenAsync("the event list is", ((string)(null)), table1, "Then ");
 #line hidden
             }
