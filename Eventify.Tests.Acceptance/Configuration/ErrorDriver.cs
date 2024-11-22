@@ -6,7 +6,7 @@ namespace Eventify.Tests.Acceptance.Configuration;
 
 public class ErrorDriver(ScenarioInfo scenarioInfo)
 {
-    private readonly Queue<Exception> _errors = new();
+    private readonly Queue<HttpException> _errors = new();
 
     public bool HasError => _errors.Any();
 
@@ -17,7 +17,7 @@ public class ErrorDriver(ScenarioInfo scenarioInfo)
             await action();
             return true;
         }
-        catch (Exception exception)
+        catch (HttpException exception)
         {
             if (!scenarioInfo.Tags.Contains("ErrorHandling"))
             {
@@ -35,7 +35,7 @@ public class ErrorDriver(ScenarioInfo scenarioInfo)
         {
             return await action();
         }
-        catch (Exception exception)
+        catch (HttpException exception)
         {
             if (!scenarioInfo.Tags.Contains("ErrorHandling"))
             {
@@ -55,7 +55,7 @@ public class ErrorDriver(ScenarioInfo scenarioInfo)
         var lastException = _errors.Dequeue();
 
         lastException.Should().NotBeNull();
-        lastException.Message.Should().MatchRegex(errorMessage);
+        lastException.ProblemDetails.Detail.Should().MatchRegex(errorMessage);
     }
 
     public void AssertNoErrorOccurred() => Assert.Empty(_errors);

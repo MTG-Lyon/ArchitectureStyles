@@ -13,6 +13,7 @@
         <PackageReference Include="FluentAssertions" Version="6.12.2" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.5"/>
         <PackageReference Include="Crafty.Reqnroll.Extensions.FluentTableAsserter" Version="3.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0"/>
         <PackageReference Include="Reqnroll" Version="2.2.1" />
         <PackageReference Include="Reqnroll.xUnit" Version="2.2.1" />

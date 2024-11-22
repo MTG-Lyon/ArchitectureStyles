@@ -113,6 +113,7 @@ public record TestHttpClient(
         throw HttpException.From(path, problemDetails);
     }
 
+    
     private T Deserialize<T>(string json) =>
         JsonSerializer.Deserialize<T>(json, Options)
         ?? throw new InvalidOperationException($"Unable to deserialize the response to {typeof(T)}");

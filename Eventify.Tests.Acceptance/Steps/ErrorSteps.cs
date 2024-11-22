@@ -13,36 +13,31 @@ public class ErrorSteps(ErrorDriver errorDriver)
 {
     [Then(@"an error occurred with message ""(.*)""")]
     public void ThenAnErrorOccurredWithTheMessage(string errorMessage) =>
-        errorDriver.AssertErrorOccurredWithMessage(errorMessage);
+        CheckError(message: errorMessage);
     
-    [Then(@"an (.*) error occurred")]
+    [Then(@"an? (.*) error occurred")]
     public void ThenUneErreurDeRessourceIntrouvableEstSurvenue(string statusText) =>
-        ThenAnErrorIsThrownWithCodeAndMessage(statusText);
+        CheckError(statusText);
 
-    [Then(@"an (.*) error occurred with message ""(.*)""")]
+    [Then(@"an? (.*) error occurred with message ""(.*)""")]
     public void ThenUneErreurDeRessourceIntrouvableEstSurvenue4(string statusText, string message) =>
-        ThenAnErrorIsThrownWithCodeAndMessage(statusText, message: message);
+        CheckError(statusText, message: message);
 
-    [Then(@"an (.*) error occurred with type ([^ ]*)")]
+    [Then(@"an? (.*) error occurred with type ([^ ]*)")]
     public void ThenUneErreurDeRessourceIntrouvableEstSurvenue2(string statusText, string type) =>
-        ThenAnErrorIsThrownWithCodeAndMessage(statusText, type: type);
+        CheckError(statusText, type: type);
 
-    [Then(@"an (.*) error occurred with type ([^ ]*) and message ""(.*)""")]
+    [Then(@"an? (.*) error occurred with type ([^ ]*) and message ""(.*)""")]
     public void ThenUneErreurDeRessourceIntrouvableEstSurvenue3(string statusText, string type, string message) =>
-        ThenAnErrorIsThrownWithCodeAndMessage(statusText, type, message);
+        CheckError(statusText, type, message);
 
-    [Then(@"an (.*) error occurred with type ([^ ]*) and extension ""(.*)"" to (.*)")]
+    [Then(@"an? (.*) error occurred with type ([^ ]*) and extension ""(.*)"" to (.*)")]
     public void ThenUneErreurDeRessourceIntrouvableEstSurvenue2(string statusText, string type, string extensionKey, string extensionValue) =>
-        ThenAnErrorIsThrownWithCodeAndMessage(statusText, type: type, extensionKey: extensionKey, extensionValue: extensionValue);
+        CheckError(statusText, type: type, extensionKey: extensionKey, extensionValue: extensionValue);
 
-    // [Then(
-    //     "une erreur (?<statusText>.*) est survenue"
-    //     + @"(?: avec)?(?: le type (?<errorType>\S*))?"
-    //     + @"(?: avec| et)?(?: le message ""?(?<message>[^""]*)""?)?"
-    //     + @"(?: avec)?(?: l'extension ""?(?<extensionKey>[^""]*)""? à (?<extensionValue>[^""]*))?"
-    // )]
-    private void ThenAnErrorIsThrownWithCodeAndMessage(
-        string statusText,
+
+    private void CheckError(
+        string statusText = "",
         string type = "",
         string message = "",
         string extensionKey = "",
@@ -98,20 +93,9 @@ public class ErrorSteps(ErrorDriver errorDriver)
         firstValidationErrorMessage.Should().Be(validationError);
     }
 
-    [Then(@"aucune erreur n'est survenue")]
+    [Then(@"no error occurred")]
     public void ThenNoErrorOccurred() => errorDriver.AssertNoErrorOccurred();
 
-    private static HttpStatusCode ParseHttpStatusCode(string statusString)
-    {
-        var status = statusString switch
-        {
-            "d'autorisation" => HttpStatusCode.Unauthorized,
-            "de format" => HttpStatusCode.BadRequest,
-            "de conflit" => HttpStatusCode.Conflict,
-            "d'interdiction" => HttpStatusCode.Forbidden,
-            "de ressource introuvable" => HttpStatusCode.NotFound,
-            _ => throw new InvalidOperationException($"Reqnroll: unknown status code '{statusString}'.")
-        };
-        return status;
-    }
+    private static HttpStatusCode ParseHttpStatusCode(string statusString) =>
+        Enum.Parse<HttpStatusCode>(statusString.Replace(" ", ""), true);
 }

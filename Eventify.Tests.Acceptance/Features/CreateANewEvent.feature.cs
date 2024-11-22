@@ -114,23 +114,23 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 await this.ScenarioStartAsync();
 #line 8
-    await testRunner.WhenAsync("I create a new event \"\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.WhenAsync("I create a new event \"     \"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 9
-    await testRunner.ThenAsync("an error occurred with message \"The event name is required\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.ThenAsync("a bad request error occurred with message \"The event name is required\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Created event are listed")]
+        [Xunit.SkippableFactAttribute(DisplayName="Created event is listed")]
         [Xunit.TraitAttribute("FeatureTitle", "Create a new event")]
-        [Xunit.TraitAttribute("Description", "Created event are listed")]
-        public async System.Threading.Tasks.Task CreatedEventAreListed()
+        [Xunit.TraitAttribute("Description", "Created event is listed")]
+        public async System.Threading.Tasks.Task CreatedEventIsListed()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Created event are listed", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Created event is listed", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

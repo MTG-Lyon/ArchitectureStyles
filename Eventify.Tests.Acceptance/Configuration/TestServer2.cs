@@ -1,6 +1,8 @@
 using Eventify.Hexagonal.Api;
+using Eventify.Hexagonal.Infrastructure.Database;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Reqnroll;
@@ -15,6 +17,8 @@ public class TestServer2(
     {
         base.ConfigureWebHost(builder);
 
+        var databaseName = Guid.NewGuid().ToString();
+        
         builder
             .ConfigureLogging(x =>
             {
@@ -27,6 +31,10 @@ public class TestServer2(
             })
             .ConfigureServices(services =>
             {
+                services
+                    .AddScoped(_ => new DbContextOptionsBuilder<EventifyDbContext>()
+                        .UseInMemoryDatabase(databaseName).Options
+                );
             })
             ;
     }

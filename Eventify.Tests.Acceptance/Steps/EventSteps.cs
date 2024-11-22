@@ -1,3 +1,5 @@
+using Eventify.Hexagonal.Domain.Ports;
+using Eventify.Hexagonal.Domain.UseCases;
 using Eventify.Tests.Acceptance.Configuration;
 using Reqnroll;
 using Reqnroll.Extensions.FluentTableAsserter;
@@ -9,7 +11,7 @@ public class EventSteps(TestApplication application)
 {
     [When(@"I create a new event ""(.*)""")]
     public Task WhenICreateANewEvent(string name) =>
-        application.Client.Post("/api/events", new { name });
+        application.Client.Post("/events", new { name });
 
     [Then(@"the event list is")]
     public async Task ThenTheEventListIs(Table table)
@@ -23,7 +25,5 @@ public class EventSteps(TestApplication application)
     }
 
     private Task<IReadOnlyCollection<EventListItemDto>?> ListEvents() =>
-        application.Client.Get<IReadOnlyCollection<EventListItemDto>>("/api/events");
+        application.Client.Get<IReadOnlyCollection<EventListItemDto>>("/events");
 }
-
-public record EventListItemDto(string Name);

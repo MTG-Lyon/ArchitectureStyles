@@ -1,13 +1,22 @@
+using System.ComponentModel.DataAnnotations;
+using Eventify.Hexagonal.Api;
+using Eventify.Hexagonal.Domain;
+using Eventify.Hexagonal.Domain.Ports;
+using Eventify.Hexagonal.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddProblemDetails();
+builder.Services.RegisterDomain();
+builder.Services.RegisterInfrastructure();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -16,35 +25,34 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+app.MapPost("/events", async (
+        [FromServices] ICreateNewEventUseCase useCase,
+        [FromBody] CreateNewEventBody body
+    )
+    =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
+    try
     {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
+        await useCase.Execute(body.Name);
+        return Results.Ok();
+    }
+    catch (ArgumentException e)
+    {
+        return Results.Problem(statusCode: 400, title: e.Message);
+    }
+});
+
+app.MapGet("/events", async (IListAllEventsUseCase useCase) => Results.Ok((object?)await useCase.ListAll()));
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
-
 namespace Eventify.Hexagonal.Api
 {
+    public class CreateNewEventBody
+    {
+        [Required] public string Name { get; set; } = default!;
+    }
+
     public class Program
     {
     }
