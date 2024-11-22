@@ -40,6 +40,8 @@ public class CleanTestServer(
         return ActivatorUtilities.CreateInstance<DelegateLoggerProvider>(serviceProvider, action);
     }
 
+    public string Name => "Clean";
+
     public Task Initialize()
     {
         _ = Server;

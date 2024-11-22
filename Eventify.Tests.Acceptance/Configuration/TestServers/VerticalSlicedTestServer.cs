@@ -1,4 +1,4 @@
-using Eventify.Hexagonal.Api;
+using Eventify.VerticalSliced.Api;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,7 +7,7 @@ using Reqnroll;
 
 namespace Eventify.Tests.Acceptance.Configuration.TestServers;
 
-public class HexagonalTestServer(
+public class VerticalSlicedTestServer(
     IReqnrollOutputHelper outputHelper
 ) : WebApplicationFactory<Program>, ITestServer
 {
@@ -40,7 +40,7 @@ public class HexagonalTestServer(
         return ActivatorUtilities.CreateInstance<DelegateLoggerProvider>(serviceProvider, action);
     }
 
-    public string Name => "Hexagonal";
+    public string Name => "VerticalSliced";
 
     public Task Initialize()
     {

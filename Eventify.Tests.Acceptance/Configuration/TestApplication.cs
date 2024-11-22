@@ -7,12 +7,19 @@ namespace Eventify.Tests.Acceptance.Configuration;
 public class TestApplication(
     HexagonalTestServer hexagonalTestServer,
     CleanTestServer cleanTestServer,
+    VerticalSlicedTestServer verticalSlicedTestServer,
     FeatureInfo featureInfo,
     ErrorDriver errorDriver
 )
 {
     private TestHttpClient? _client;
     private ITestServer? _testServer;
+
+    private IReadOnlyCollection<ITestServer> AllTestServers => [
+        cleanTestServer, 
+        hexagonalTestServer, 
+        verticalSlicedTestServer
+    ];
 
     public TestHttpClient Client => _client
         ??= new TestHttpClient(
@@ -32,16 +39,15 @@ public class TestApplication(
 
     private ITestServer GetTestServer()
     {
-        if(featureInfo.Tags.Contains("Clean"))
+        foreach (var testServer in AllTestServers)
         {
-            return cleanTestServer;
-        }
-
-        if(featureInfo.Tags.Contains("Hexagonal"))
-        {
-            return hexagonalTestServer;
+            if (featureInfo.Tags.Contains(testServer.Name))
+            {
+                return testServer;
+            }
         }
 
         throw new InvalidOperationException("No test server found");
     }
+
 }
