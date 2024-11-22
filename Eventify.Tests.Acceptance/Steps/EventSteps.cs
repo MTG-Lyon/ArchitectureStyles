@@ -1,4 +1,3 @@
-using Eventify.Hexagonal.Domain.Ports;
 using Eventify.Hexagonal.Domain.UseCases;
 using Eventify.Tests.Acceptance.Configuration;
 using Reqnroll;

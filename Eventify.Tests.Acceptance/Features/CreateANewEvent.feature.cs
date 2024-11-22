@@ -19,12 +19,14 @@ namespace Eventify.Tests.Acceptance.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    [Xunit.TraitAttribute("Category", "Clean")]
     public partial class CreateANewEventFeature : object, Xunit.IClassFixture<CreateANewEventFeature.FixtureData>, Xunit.IAsyncLifetime
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
-        private static string[] featureTags = ((string[])(null));
+        private static string[] featureTags = new string[] {
+                "Clean"};
         
         private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Create a new event", "In order to gather participants around a specific topic\nAs a organizer\nI want to " +
                 "create a new event", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
@@ -103,7 +105,7 @@ namespace Eventify.Tests.Acceptance.Features
                     "ErrorHandling"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Cannot create an event without name", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 7
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -113,10 +115,10 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 8
+#line 11
     await testRunner.WhenAsync("I create a new event \"     \"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 9
+#line 12
     await testRunner.ThenAsync("a bad request error occurred with message \"The event name is required\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -131,7 +133,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Created event is listed", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 11
+#line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -141,14 +143,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 12
+#line 15
     await testRunner.WhenAsync("I create a new event \"Software Maintenance Costs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
                 global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
                             "Name"});
                 table1.AddRow(new string[] {
                             "Software Maintenance Costs"});
-#line 13
+#line 16
     await testRunner.ThenAsync("the event list is", ((string)(null)), table1, "Then ");
 #line hidden
             }

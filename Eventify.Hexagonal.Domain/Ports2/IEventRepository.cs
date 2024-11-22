@@ -1,5 +1,4 @@
 using Eventify.Hexagonal.Domain.Models;
-using Eventify.Hexagonal.Domain.Ports;
 using Eventify.Hexagonal.Domain.UseCases;
 
 namespace Eventify.Hexagonal.Domain.Ports2;

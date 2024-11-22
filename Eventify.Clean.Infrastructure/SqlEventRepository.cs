@@ -1,10 +1,8 @@
-using Eventify.Hexagonal.Domain.Models;
-using Eventify.Hexagonal.Domain.Ports2;
-using Eventify.Hexagonal.Domain.UseCases;
+using Eventify.Clean.Domain;
 using Eventify.Hexagonal.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
-namespace Eventify.Hexagonal.Infrastructure.Adapters;
+namespace Eventify.Clean.Infrastructure;
 
 public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
 {
@@ -23,6 +21,6 @@ public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
 
     public async Task<IReadOnlyCollection<EventListItemDto>> GetAll() =>
         await dbContext.Events
-            .Select(x => new EventListItemDto(x.Name))
+            .Select(x => new EventListItemDto(x.Id,x.Name))
             .ToListAsync();
 }

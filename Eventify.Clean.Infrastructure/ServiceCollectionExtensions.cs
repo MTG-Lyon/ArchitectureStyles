@@ -1,9 +1,8 @@
-using Eventify.Hexagonal.Domain.Ports2;
-using Eventify.Hexagonal.Infrastructure.Adapters;
+﻿using Eventify.Clean.Domain;
 using Eventify.Infrastructure.Database;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Eventify.Hexagonal.Infrastructure;
+namespace Eventify.Clean.Infrastructure;
 
 public static class ServiceCollectionExtensions
 {
@@ -11,9 +10,8 @@ public static class ServiceCollectionExtensions
     {
         services
             .AddTransient<IEventRepository, SqlEventRepository>()
-            .RegisterDatabase()
-            ;
-
+            .RegisterDatabase();
+        
         return services;
     }
 }

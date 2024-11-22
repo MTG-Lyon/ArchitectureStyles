@@ -29,6 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Eventify.Clean.Api\Eventify.Clean.Api.csproj" />
       <ProjectReference Include="..\Eventify.Hexagonal.Api\Eventify.Hexagonal.Api.csproj" />
     </ItemGroup>
 
