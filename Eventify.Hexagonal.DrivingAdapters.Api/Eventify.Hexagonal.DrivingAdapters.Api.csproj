@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <InvariantGlobalization>true</InvariantGlobalization>
+        <RootNamespace>Eventify.Hexagonal.Api</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,8 +14,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Eventify.Hexagonal.Domain\Eventify.Hexagonal.Domain.csproj" />
-      <ProjectReference Include="..\Eventify.Hexagonal.Infrastructure\Eventify.Hexagonal.Infrastructure.csproj" />
+      <ProjectReference Include="..\Eventify.Hexagonal.Application\Eventify.Hexagonal.Application.csproj" />
+      <ProjectReference Include="..\Eventify.Hexagonal.DrivenAdapters.Sql\Eventify.Hexagonal.DrivenAdapters.Sql.csproj" />
     </ItemGroup>
 
 </Project>

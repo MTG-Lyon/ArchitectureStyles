@@ -1,4 +1,4 @@
-using Eventify.Hexagonal.Domain.Ports2;
+using Eventify.Hexagonal.Domain.DrivenPorts;
 using Eventify.Hexagonal.Infrastructure.Adapters;
 using Eventify.Infrastructure.Database;
 using Microsoft.Extensions.DependencyInjection;

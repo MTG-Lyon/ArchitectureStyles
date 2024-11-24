@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.Hexagonal.Api", "Eventify.Hexagonal.Api\Eventify.Hexagonal.Api.csproj", "{CDE569C7-DD48-49EF-A94D-58852B6C42A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.Hexagonal.DrivingAdapters.Api", "Eventify.Hexagonal.DrivingAdapters.Api\Eventify.Hexagonal.DrivingAdapters.Api.csproj", "{CDE569C7-DD48-49EF-A94D-58852B6C42A4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hexagonal", "Hexagonal", "{A368735A-BDB3-4D85-9EBC-B4851B213CE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.Hexagonal.Domain", "Eventify.Hexagonal.Domain\Eventify.Hexagonal.Domain.csproj", "{D841906F-B7BD-44AD-BB61-521F26B0C675}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.Hexagonal.Application", "Eventify.Hexagonal.Application\Eventify.Hexagonal.Application.csproj", "{D841906F-B7BD-44AD-BB61-521F26B0C675}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.Hexagonal.Infrastructure", "Eventify.Hexagonal.Infrastructure\Eventify.Hexagonal.Infrastructure.csproj", "{2F8D96D3-89B3-4320-825C-807A4E0A1042}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.Hexagonal.DrivenAdapters.Sql", "Eventify.Hexagonal.DrivenAdapters.Sql\Eventify.Hexagonal.DrivenAdapters.Sql.csproj", "{2F8D96D3-89B3-4320-825C-807A4E0A1042}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.Tests.Acceptance", "Eventify.Tests.Acceptance\Eventify.Tests.Acceptance.csproj", "{39FC0E92-21BE-449A-BD88-FC85F91E618D}"
 EndProject
@@ -31,6 +31,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Architectures", "Architectures", "{AA69478B-FDC4-4DB9-89CB-D96585CA7914}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.VerticalSliced.Api", "Eventify.VerticalSliced.Api\Eventify.VerticalSliced.Api.csproj", "{87706BE4-9460-45C6-BDC7-1D696E8FC252}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.Hexagonal.DrivingAdapters.Console", "Eventify.Hexagonal.DrivingAdapters.Console\Eventify.Hexagonal.DrivingAdapters.Console.csproj", "{6535F410-3595-46C2-B086-23AF74936395}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.Hexagonal.DrivenAdapters.InMemory", "Eventify.Hexagonal.DrivenAdapters.InMemory\Eventify.Hexagonal.DrivenAdapters.InMemory.csproj", "{3234FD1B-E601-4B96-8388-D5769E2DEBAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DrivingAdapters", "DrivingAdapters", "{1E6BC951-8C5C-41C4-9993-177B2BE282BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DrivenAdapters", "DrivenAdapters", "{512921DD-1529-42E1-A46B-AF15D4A83D1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,11 +86,17 @@ Global
 		{87706BE4-9460-45C6-BDC7-1D696E8FC252}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87706BE4-9460-45C6-BDC7-1D696E8FC252}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87706BE4-9460-45C6-BDC7-1D696E8FC252}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6535F410-3595-46C2-B086-23AF74936395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6535F410-3595-46C2-B086-23AF74936395}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6535F410-3595-46C2-B086-23AF74936395}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6535F410-3595-46C2-B086-23AF74936395}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3234FD1B-E601-4B96-8388-D5769E2DEBAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3234FD1B-E601-4B96-8388-D5769E2DEBAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3234FD1B-E601-4B96-8388-D5769E2DEBAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3234FD1B-E601-4B96-8388-D5769E2DEBAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{CDE569C7-DD48-49EF-A94D-58852B6C42A4} = {A368735A-BDB3-4D85-9EBC-B4851B213CE8}
 		{D841906F-B7BD-44AD-BB61-521F26B0C675} = {A368735A-BDB3-4D85-9EBC-B4851B213CE8}
-		{2F8D96D3-89B3-4320-825C-807A4E0A1042} = {A368735A-BDB3-4D85-9EBC-B4851B213CE8}
 		{4A919445-C60C-40E6-B401-C18124AFAEDB} = {89D0D4A1-9167-4905-BDAA-4ED850AD4DEB}
 		{0CBF4C97-BA70-45BC-A638-E07EF14FD4CB} = {89D0D4A1-9167-4905-BDAA-4ED850AD4DEB}
 		{61342011-A8DC-45A3-B77C-83875FAA74AD} = {89D0D4A1-9167-4905-BDAA-4ED850AD4DEB}
@@ -93,5 +107,11 @@ Global
 		{A368735A-BDB3-4D85-9EBC-B4851B213CE8} = {AA69478B-FDC4-4DB9-89CB-D96585CA7914}
 		{1BF98F8C-A77F-44D0-87C0-4C4F380C429D} = {AA69478B-FDC4-4DB9-89CB-D96585CA7914}
 		{87706BE4-9460-45C6-BDC7-1D696E8FC252} = {1BF98F8C-A77F-44D0-87C0-4C4F380C429D}
+		{1E6BC951-8C5C-41C4-9993-177B2BE282BE} = {A368735A-BDB3-4D85-9EBC-B4851B213CE8}
+		{CDE569C7-DD48-49EF-A94D-58852B6C42A4} = {1E6BC951-8C5C-41C4-9993-177B2BE282BE}
+		{6535F410-3595-46C2-B086-23AF74936395} = {1E6BC951-8C5C-41C4-9993-177B2BE282BE}
+		{512921DD-1529-42E1-A46B-AF15D4A83D1D} = {A368735A-BDB3-4D85-9EBC-B4851B213CE8}
+		{3234FD1B-E601-4B96-8388-D5769E2DEBAB} = {512921DD-1529-42E1-A46B-AF15D4A83D1D}
+		{2F8D96D3-89B3-4320-825C-807A4E0A1042} = {512921DD-1529-42E1-A46B-AF15D4A83D1D}
 	EndGlobalSection
 EndGlobal

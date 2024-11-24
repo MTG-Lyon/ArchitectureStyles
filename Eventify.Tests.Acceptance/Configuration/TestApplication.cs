@@ -7,7 +7,7 @@ namespace Eventify.Tests.Acceptance.Configuration;
 public class TestApplication(
     HexagonalTestServer hexagonalTestServer,
     CleanTestServer cleanTestServer,
-    VerticalSlicedTestServer verticalSlicedTestServer,
+    VerticalSliceTestServer verticalSliceTestServer,
     FeatureInfo featureInfo,
     ErrorDriver errorDriver
 )
@@ -18,7 +18,7 @@ public class TestApplication(
     private IReadOnlyCollection<ITestServer> AllTestServers => [
         cleanTestServer, 
         hexagonalTestServer, 
-        verticalSlicedTestServer
+        verticalSliceTestServer
     ];
 
     public TestHttpClient Client => _client

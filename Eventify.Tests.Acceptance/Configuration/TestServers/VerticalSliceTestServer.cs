@@ -7,7 +7,7 @@ using Reqnroll;
 
 namespace Eventify.Tests.Acceptance.Configuration.TestServers;
 
-public class VerticalSlicedTestServer(
+public class VerticalSliceTestServer(
     IReqnrollOutputHelper outputHelper
 ) : WebApplicationFactory<Program>, ITestServer
 {
@@ -40,7 +40,7 @@ public class VerticalSlicedTestServer(
         return ActivatorUtilities.CreateInstance<DelegateLoggerProvider>(serviceProvider, action);
     }
 
-    public string Name => "VerticalSliced";
+    public string Name => "VerticalSlice";
 
     public Task Initialize()
     {

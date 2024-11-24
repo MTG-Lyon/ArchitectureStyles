@@ -30,8 +30,17 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Eventify.Clean.Api\Eventify.Clean.Api.csproj" />
-      <ProjectReference Include="..\Eventify.Hexagonal.Api\Eventify.Hexagonal.Api.csproj" />
+      <ProjectReference Include="..\Eventify.Hexagonal.DrivingAdapters.Api\Eventify.Hexagonal.DrivingAdapters.Api.csproj" />
       <ProjectReference Include="..\Eventify.VerticalSliced.Api\Eventify.VerticalSliced.Api.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Features\DescribeAnEvent.feature.cs">
+        <DependentUpon>EditEventDescription.feature</DependentUpon>
+        <AutoGen>true</AutoGen>
+        <DesignTime>true</DesignTime>
+        <Visible>true</Visible>
+      </Compile>
     </ItemGroup>
 
 </Project>

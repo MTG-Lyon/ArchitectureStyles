@@ -1,21 +1,21 @@
+using Eventify.Hexagonal.Domain.DrivenPorts;
+using Eventify.Hexagonal.Domain.DrivingPorts;
 using Eventify.Hexagonal.Domain.Models;
-using Eventify.Hexagonal.Domain.Ports;
-using Eventify.Hexagonal.Domain.Ports2;
 
 namespace Eventify.Hexagonal.Domain.UseCases;
 
-internal class CreateNewEventUseCase(
+internal class RegisterANewEventUseCase(
     IEventRepository eventRepository
-) : ICreateNewEventUseCase
+) : IRegisterEventUseCase
 {
-    public async Task Execute(string name)
+    public async Task Register(string name)
     {
         if(await eventRepository.Exists(name))
         {
             throw new EventWithSameNameAlreadyExistsException("The event name is already taken");
         }
         
-        var @event = new Event(new EventName(name));
+        var @event = Event.Register(new EventName(name));
 
         await eventRepository.Save(@event);
     }

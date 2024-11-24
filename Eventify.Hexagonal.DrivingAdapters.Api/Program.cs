@@ -1,4 +1,4 @@
-using Eventify.Hexagonal.Api;
+using Eventify.Hexagonal.Api.Routing;
 using Eventify.Hexagonal.Domain;
 using Eventify.Hexagonal.Infrastructure;
 
@@ -7,8 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddProblemDetails();
-builder.Services.RegisterDomain();
-builder.Services.RegisterInfrastructure();
+
+builder.Services
+    .RegisterApplication()
+    .RegisterInfrastructure();
 
 var app = builder.Build();
 
