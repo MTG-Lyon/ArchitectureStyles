@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Eventify.Hexagonal.Infrastructure.Database;
+namespace Eventify.Infrastructure.Database.Database;
 
 public class EventifyDbContext(DbContextOptions options) : DbContext(options)
 {

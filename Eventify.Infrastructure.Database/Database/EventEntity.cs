@@ -1,12 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Eventify.Hexagonal.Infrastructure.Database;
+namespace Eventify.Infrastructure.Database.Database;
 
 public class EventEntity
 {
     [Key]
     public Guid Id { get; set; }
-    
     public string Name { get; set; } = default!;
-    public string? Description { get; set; } = default!;
+    public string? Description { get; set; }
+    public string Status { get; set; } = string.Empty;
 }

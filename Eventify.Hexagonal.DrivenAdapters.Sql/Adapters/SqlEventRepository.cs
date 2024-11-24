@@ -1,7 +1,7 @@
 using Eventify.Hexagonal.Domain.DrivenPorts;
 using Eventify.Hexagonal.Domain.Models;
 using Eventify.Hexagonal.Domain.UseCases;
-using Eventify.Hexagonal.Infrastructure.Database;
+using Eventify.Infrastructure.Database.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace Eventify.Hexagonal.Infrastructure.Adapters;
@@ -20,7 +20,8 @@ public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
         return Event.Rehydrate(
             entity.Id,
             new EventName(entity.Name),
-            entity.Description ?? string.Empty
+            entity.Description ?? string.Empty,
+            Enum.Parse<EventStatus>(entity.Status)
         );
     }
 
@@ -39,13 +40,14 @@ public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
         
         existing.Name = @event.Name.Value;
         existing.Description = @event.Description;
+        existing.Status = @event.Status.ToString();
 
         await dbContext.SaveChangesAsync();
     }
 
     public async Task<IReadOnlyCollection<EventListItemDto>> GetAll() =>
         await dbContext.Events
-            .Select(x => new EventListItemDto(x.Id, x.Name, x.Description ?? string.Empty))
+            .Select(x => new EventListItemDto(x.Id, x.Name, x.Description ?? string.Empty, Enum.Parse<EventStatus>(x.Status)))
             .ToListAsync();
 
     public async Task<bool> Exists(string name) =>

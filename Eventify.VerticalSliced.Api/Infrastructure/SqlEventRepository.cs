@@ -1,4 +1,4 @@
-using Eventify.Hexagonal.Infrastructure.Database;
+using Eventify.Infrastructure.Database.Database;
 using Eventify.VerticalSliced.Api.Domain;
 using Eventify.VerticalSliced.Api.UseCases.ListExistingEvents;
 using Microsoft.EntityFrameworkCore;

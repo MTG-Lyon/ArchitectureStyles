@@ -20,7 +20,7 @@ namespace Eventify.Tests.Acceptance.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Xunit.TraitAttribute("Category", "Hexagonal")]
-    public partial class DescribeAnEventFeature : object, Xunit.IClassFixture<DescribeAnEventFeature.FixtureData>, Xunit.IAsyncLifetime
+    public partial class PublishAnEventFeature : object, Xunit.IClassFixture<PublishAnEventFeature.FixtureData>, Xunit.IAsyncLifetime
     {
         
         private global::Reqnroll.ITestRunner testRunner;
@@ -28,15 +28,15 @@ namespace Eventify.Tests.Acceptance.Features
         private static string[] featureTags = new string[] {
                 "Hexagonal"};
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Describe an event", "In order to make the event attractive\nAs a organizer\nI want to describe the event" +
-                "", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Publish an event", "In order to allow participants to join an event\nAs a organizer\nI want to publish " +
+                "an event", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "DescribeAnEvent.feature"
+#line 1 "PublishAnEvent.feature"
 #line hidden
         
-        public DescribeAnEventFeature(DescribeAnEventFeature.FixtureData fixtureData, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public PublishAnEventFeature(PublishAnEventFeature.FixtureData fixtureData, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
         }
@@ -95,17 +95,15 @@ namespace Eventify.Tests.Acceptance.Features
             await this.TestTearDownAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Cannot describe an unknown event")]
-        [Xunit.TraitAttribute("FeatureTitle", "Describe an event")]
-        [Xunit.TraitAttribute("Description", "Cannot describe an unknown event")]
-        [Xunit.TraitAttribute("Category", "ErrorHandling")]
-        public async System.Threading.Tasks.Task CannotDescribeAnUnknownEvent()
+        [Xunit.SkippableFactAttribute(DisplayName="Publish status is displayed on the event list")]
+        [Xunit.TraitAttribute("FeatureTitle", "Publish an event")]
+        [Xunit.TraitAttribute("Description", "Publish status is displayed on the event list")]
+        public async System.Threading.Tasks.Task PublishStatusIsDisplayedOnTheEventList()
         {
-            string[] tagsOfScenario = new string[] {
-                    "ErrorHandling"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Cannot describe an unknown event", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 11
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Publish status is displayed on the event list", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -115,25 +113,36 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 12
-    await testRunner.WhenAsync("I describe an unknown event", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 11
+    await testRunner.GivenAsync("a new event \"Software Maintenance Costs\" created", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
+#line 12
+    await testRunner.WhenAsync("I publish the event \"Software Maintenance Costs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
+                            "Name",
+                            "Status"});
+                table2.AddRow(new string[] {
+                            "Software Maintenance Costs",
+                            "Published"});
 #line 13
-    await testRunner.ThenAsync("a not found error occurred", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.ThenAsync("the event list is", ((string)(null)), table2, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="New description is listed in the event list")]
-        [Xunit.TraitAttribute("FeatureTitle", "Describe an event")]
-        [Xunit.TraitAttribute("Description", "New description is listed in the event list")]
-        public async System.Threading.Tasks.Task NewDescriptionIsListedInTheEventList()
+        [Xunit.SkippableFactAttribute(DisplayName="Cannot publish an event twice")]
+        [Xunit.TraitAttribute("FeatureTitle", "Publish an event")]
+        [Xunit.TraitAttribute("Description", "Cannot publish an event twice")]
+        [Xunit.TraitAttribute("Category", "ErrorHandling")]
+        public async System.Threading.Tasks.Task CannotPublishAnEventTwice()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "ErrorHandling"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("New description is listed in the event list", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 15
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Cannot publish an event twice", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 18
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -143,21 +152,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 16
+#line 19
     await testRunner.GivenAsync("a new event \"Software Maintenance Costs\" created", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 17
-    await testRunner.WhenAsync("I describe the event \"Software Maintenance Costs\" with \"This event will be organi" +
-                        "zed by M. Gourou\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 20
+    await testRunner.WhenAsync("I publish the event \"Software Maintenance Costs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
-                            "Name",
-                            "Description"});
-                table1.AddRow(new string[] {
-                            "Software Maintenance Costs",
-                            "This event will be organized by M. Gourou"});
-#line 18
-    await testRunner.ThenAsync("the event list is", ((string)(null)), table1, "Then ");
+#line 21
+    await testRunner.AndAsync("I publish the event \"Software Maintenance Costs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 22
+    await testRunner.ThenAsync("a forbidden error occurred with message \"The event is already published\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -170,12 +175,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             async System.Threading.Tasks.Task Xunit.IAsyncLifetime.InitializeAsync()
             {
-                await DescribeAnEventFeature.FeatureSetupAsync();
+                await PublishAnEventFeature.FeatureSetupAsync();
             }
             
             async System.Threading.Tasks.Task Xunit.IAsyncLifetime.DisposeAsync()
             {
-                await DescribeAnEventFeature.FeatureTearDownAsync();
+                await PublishAnEventFeature.FeatureTearDownAsync();
             }
         }
     }

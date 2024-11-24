@@ -1,5 +1,5 @@
 using Eventify.Clean.Domain;
-using Eventify.Hexagonal.Infrastructure.Database;
+using Eventify.Infrastructure.Database.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace Eventify.Clean.Infrastructure;

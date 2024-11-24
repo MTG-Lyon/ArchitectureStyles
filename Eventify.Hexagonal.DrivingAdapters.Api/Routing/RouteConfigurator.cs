@@ -1,4 +1,5 @@
 using Eventify.Hexagonal.Domain.DrivingPorts;
+using Eventify.Hexagonal.Domain.Models;
 using Eventify.Hexagonal.Domain.UseCases;
 using Eventify.Hexagonal.Infrastructure.Adapters;
 using Microsoft.AspNetCore.Mvc;
@@ -30,9 +31,14 @@ public class RouteConfigurator(WebApplication app)
             }
         });
 
-        app.MapGet("/events", async (IListAllEventsUseCase useCase) => Results.Ok((object?)await useCase.ListAll()));
+        app.MapGet("/events", async (IListAllEventsUseCase useCase) =>
+        {
+            var results = await useCase.ListAll();
+            
+            return Results.Ok(results);
+        });
 
-        app.MapPost("/events/{eventId}/description",
+        app.MapPut("/events/{eventId}/describe",
             async (
                 [FromServices] IDescribeEventUseCase useCase, 
                 [FromRoute] Guid eventId,
@@ -43,6 +49,28 @@ public class RouteConfigurator(WebApplication app)
                     await useCase.Describe(eventId, body.Description);
 
                     return Results.Ok();
+                }
+                catch (EntityNotFoundException e)
+                {
+                    return Results.Problem(statusCode: 404, title: e.Message);
+                }
+            });
+
+        app.MapPut("/events/{eventId}/publish",
+            async (
+                [FromServices] IPublishEventUseCase useCase, 
+                [FromRoute] Guid eventId
+            ) =>
+            {
+                try
+                {
+                    await useCase.Publish(eventId);
+
+                    return Results.Ok();
+                }
+                catch (EventAlreadyPublishedException e)
+                {
+                    return Results.Problem(statusCode: 403, title: e.Message);
                 }
                 catch (EntityNotFoundException e)
                 {

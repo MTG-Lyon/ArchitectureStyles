@@ -11,6 +11,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IRegisterEventUseCase, RegisterANewEventUseCase>();
         services.AddScoped<IListAllEventsUseCase, ListAllEventsUseCase>();
         services.AddScoped<IDescribeEventUseCase, DescribeEventUseCase>();
+        services.AddScoped<IPublishEventUseCase, PublishEventUseCase>();
 
         return services;
     }

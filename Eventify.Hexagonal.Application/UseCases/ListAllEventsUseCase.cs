@@ -1,5 +1,6 @@
 using Eventify.Hexagonal.Domain.DrivenPorts;
 using Eventify.Hexagonal.Domain.DrivingPorts;
+using Eventify.Hexagonal.Domain.Models;
 
 namespace Eventify.Hexagonal.Domain.UseCases;
 
@@ -9,4 +10,9 @@ public class ListAllEventsUseCase(IEventRepository eventRepository) : IListAllEv
         await eventRepository.GetAll();
 }
 
-public record EventListItemDto(Guid Id, string Name, string Description);
+public record EventListItemDto(
+    Guid Id,
+    string Name,
+    string Description,
+    EventStatus Status
+);

@@ -19,13 +19,17 @@ public class EventSteps(TestApplication application)
     [When(@"I describe the event ""(.*)"" with ""(.*)""")]
     public async Task WhenIDescribeTheEventWith(string eventName, string description)
     {
-        var events = await ListEvents();
-        
-        var eventId = events!
-            .First(x => x.Name == eventName)
-            .Id;
-        
+        var eventId = await GetEventId(eventName);
+
         await DescribeEvent(eventId, description);
+    }
+
+    [When(@"I publish the event ""(.*)""")]
+    public async Task WhenIPublishTheEvent(string eventName)
+    {
+        var eventId = await GetEventId(eventName);
+        
+        await PublishEvent(eventId);
     }
 
     [Then(@"the event list is")]
@@ -37,14 +41,27 @@ public class EventSteps(TestApplication application)
             .CollectionShouldBeEquivalentToTable(table)
             .WithProperty(x => x.Name)
             .WithProperty(x => x.Description)
+            .WithProperty(x => x.Status)
             .Assert();
+    }
+
+    private async Task<Guid> GetEventId(string eventName)
+    {
+        var events = await ListEvents();
+
+        return events!
+            .First(x => x.Name == eventName)
+            .Id;
     }
 
     private Task<IReadOnlyCollection<EventListItemTestDto>?> ListEvents() =>
         application.Client.Get<IReadOnlyCollection<EventListItemTestDto>>("/events");
 
     private Task DescribeEvent(Guid eventId, string description) =>
-        application.Client.Post($"/events/{eventId}/description", new { description });
+        application.Client.Put($"/events/{eventId}/describe", new { description });
+
+    private Task PublishEvent(Guid eventId) =>
+        application.Client.Put($"/events/{eventId}/publish");
 }
 
-public record EventListItemTestDto(Guid Id, string Name, string Description);
+public record EventListItemTestDto(Guid Id, string Name, string Description, string Status);

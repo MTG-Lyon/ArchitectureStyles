@@ -1,4 +1,4 @@
-﻿using Eventify.Hexagonal.Infrastructure.Database;
+﻿using Eventify.Infrastructure.Database.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 

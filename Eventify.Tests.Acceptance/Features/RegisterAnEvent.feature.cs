@@ -19,21 +19,21 @@ namespace Eventify.Tests.Acceptance.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [Xunit.TraitAttribute("Category", "VerticalSlice")]
+    [Xunit.TraitAttribute("Category", "Hexagonal")]
     public partial class CreateANewEventFeature : object, Xunit.IClassFixture<CreateANewEventFeature.FixtureData>, Xunit.IAsyncLifetime
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = new string[] {
-                "VerticalSlice"};
+                "Hexagonal"};
         
         private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Create a new event", "In order to gather participants around a specific topic\nAs a organizer\nI want to " +
                 "create a new event", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "CreateANewEvent.feature"
+#line 1 "RegisterAnEvent.feature"
 #line hidden
         
         public CreateANewEventFeature(CreateANewEventFeature.FixtureData fixtureData, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
@@ -158,14 +158,14 @@ this.ScenarioInitialize(scenarioInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Created event is listed")]
+        [Xunit.SkippableFactAttribute(DisplayName="Created event is listed with draft status by default")]
         [Xunit.TraitAttribute("FeatureTitle", "Create a new event")]
-        [Xunit.TraitAttribute("Description", "Created event is listed")]
-        public async System.Threading.Tasks.Task CreatedEventIsListed()
+        [Xunit.TraitAttribute("Description", "Created event is listed with draft status by default")]
+        public async System.Threading.Tasks.Task CreatedEventIsListedWithDraftStatusByDefault()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Created event is listed", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Created event is listed with draft status by default", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 21
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -179,12 +179,14 @@ this.ScenarioInitialize(scenarioInfo);
 #line 22
     await testRunner.WhenAsync("I create a new event \"Software Maintenance Costs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
-                            "Name"});
-                table1.AddRow(new string[] {
-                            "Software Maintenance Costs"});
+                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
+                            "Name",
+                            "Status"});
+                table3.AddRow(new string[] {
+                            "Software Maintenance Costs",
+                            "Draft"});
 #line 23
-    await testRunner.ThenAsync("the event list is", ((string)(null)), table1, "Then ");
+    await testRunner.ThenAsync("the event list is", ((string)(null)), table3, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
