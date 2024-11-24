@@ -14,5 +14,8 @@ public record EventListItemDto(
     Guid Id,
     string Name,
     string Description,
-    EventStatus Status
+    EventStatus Status,
+    IReadOnlyCollection<ParticipantDto> Participants
 );
+
+public record ParticipantDto(string EmailAddress);

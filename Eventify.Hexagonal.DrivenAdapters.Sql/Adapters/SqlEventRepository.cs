@@ -10,7 +10,9 @@ public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
 {
     public async Task<Event> Get(Guid eventId)
     {
-        var entity = await dbContext.Events.SingleOrDefaultAsync(x => x.Id == eventId);
+        var entity = await dbContext.Events
+            .Include(x => x.Participants)
+            .SingleOrDefaultAsync(x => x.Id == eventId);
         
         if (entity is null)
         {
@@ -21,7 +23,10 @@ public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
             entity.Id,
             new EventName(entity.Name),
             entity.Description ?? string.Empty,
-            Enum.Parse<EventStatus>(entity.Status)
+            Enum.Parse<EventStatus>(entity.Status),
+            entity.Participants
+                .Select(x => new Participant(new EmailAddress(x.EmailAddress)))
+                .ToList()
         );
     }
 
@@ -33,7 +38,8 @@ public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
         {
             existing = new EventEntity
             {
-                Id = Guid.NewGuid()
+                Id = Guid.NewGuid(),
+                Participants = new List<ParticipantEntity>()
             };
             dbContext.Events.Add(existing);
         }
@@ -41,17 +47,34 @@ public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
         existing.Name = @event.Name.Value;
         existing.Description = @event.Description;
         existing.Status = @event.Status.ToString();
+        existing.Participants.Clear();
+        
+        foreach (var participant in @event.Participants)
+        {
+            var participantEntity = new ParticipantEntity
+            {
+                EmailAddress = participant.EmailAddress.Value
+            };
+            
+            existing.Participants.Add(participantEntity);
+        }
 
         await dbContext.SaveChangesAsync();
     }
 
     public async Task<IReadOnlyCollection<EventListItemDto>> GetAll() =>
         await dbContext.Events
-            .Select(x => new EventListItemDto(x.Id, x.Name, x.Description ?? string.Empty, Enum.Parse<EventStatus>(x.Status)))
+            .Select(x => new EventListItemDto(
+                x.Id,
+                x.Name,
+                x.Description ?? string.Empty,
+                Enum.Parse<EventStatus>(x.Status),
+                x.Participants
+                    .Select(y => new ParticipantDto(y.EmailAddress))
+                    .ToList()
+            ))
             .ToListAsync();
 
     public async Task<bool> Exists(string name) =>
         await dbContext.Events.AnyAsync(x => x.Name == name);
 }
-
-public class EntityNotFoundException(string message) : Exception(message);

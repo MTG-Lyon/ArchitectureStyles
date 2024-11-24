@@ -119,29 +119,29 @@ this.ScenarioInitialize(scenarioInfo);
 #line 12
     await testRunner.WhenAsync("I publish the event \"Software Maintenance Costs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
                             "Name",
                             "Status"});
-                table2.AddRow(new string[] {
+                table3.AddRow(new string[] {
                             "Software Maintenance Costs",
                             "Published"});
 #line 13
-    await testRunner.ThenAsync("the event list is", ((string)(null)), table2, "Then ");
+    await testRunner.ThenAsync("the event list is", ((string)(null)), table3, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Cannot publish an event twice")]
+        [Xunit.SkippableFactAttribute(DisplayName="Cannot publish an already published event")]
         [Xunit.TraitAttribute("FeatureTitle", "Publish an event")]
-        [Xunit.TraitAttribute("Description", "Cannot publish an event twice")]
+        [Xunit.TraitAttribute("Description", "Cannot publish an already published event")]
         [Xunit.TraitAttribute("Category", "ErrorHandling")]
-        public async System.Threading.Tasks.Task CannotPublishAnEventTwice()
+        public async System.Threading.Tasks.Task CannotPublishAnAlreadyPublishedEvent()
         {
             string[] tagsOfScenario = new string[] {
                     "ErrorHandling"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Cannot publish an event twice", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Cannot publish an already published event", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 18
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

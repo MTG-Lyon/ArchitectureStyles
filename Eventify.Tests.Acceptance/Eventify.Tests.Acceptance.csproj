@@ -47,6 +47,12 @@
         <DesignTime>true</DesignTime>
         <Visible>true</Visible>
       </Compile>
+      <Compile Update="Features\JoinAnEvent.feature.cs">
+        <DependentUpon>JoinAnEvent.feature</DependentUpon>
+        <AutoGen>true</AutoGen>
+        <DesignTime>true</DesignTime>
+        <Visible>true</Visible>
+      </Compile>
     </ItemGroup>
 
 </Project>

@@ -20,7 +20,17 @@ internal class InMemoryEventRepository : IEventRepository
     public Task<IReadOnlyCollection<EventListItemDto>> GetAll()
     {
         var items = _events.Values
-            .Select(x => new EventListItemDto(x.Id, x.Name.Value))
+            .Select(x => 
+                new EventListItemDto(
+                    x.Id,
+                    x.Name.Value,
+                    x.Description,
+                    x.Status,
+                    x.Participants
+                        .Select(y => new ParticipantDto(y.EmailAddress.Value))
+                        .ToList()
+                )
+            )
             .ToList();
         
         return Task.FromResult<IReadOnlyCollection<EventListItemDto>>(items);

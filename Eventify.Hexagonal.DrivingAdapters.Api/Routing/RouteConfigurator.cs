@@ -77,5 +77,36 @@ public class RouteConfigurator(WebApplication app)
                     return Results.Problem(statusCode: 404, title: e.Message);
                 }
             });
+
+        app.MapPost("/events/{eventId}/participants",
+            async (
+                [FromServices] IJoinEventUseCase useCase, 
+                [FromRoute] Guid eventId,
+                [FromBody] JoinEventBody body
+            ) =>
+            {
+                try
+                {
+                    await useCase.Join(eventId, body.EmailAddress);
+
+                    return Results.Ok();
+                }
+                catch (ParticipantAlreadyJoinedException e)
+                {
+                    return Results.Problem(statusCode: 403, title: e.Message);
+                }
+                catch (EventNotPublishedYetException e)
+                {
+                    return Results.Problem(statusCode: 403, title: e.Message);
+                }
+                catch (ParticipantLimitReachedException e)
+                {
+                    return Results.Problem(statusCode: 403, title: e.Message);
+                }
+                catch (EntityNotFoundException e)
+                {
+                    return Results.Problem(statusCode: 404, title: e.Message);
+                }
+            });
     }
 }

@@ -15,7 +15,7 @@ Scenario: Publish status is displayed on the event list
       | Software Maintenance Costs | Published |
 
 @ErrorHandling
-Scenario: Cannot publish an event twice
+Scenario: Cannot publish an already published event
     Given a new event "Software Maintenance Costs" created
     When I publish the event "Software Maintenance Costs"
     And I publish the event "Software Maintenance Costs"

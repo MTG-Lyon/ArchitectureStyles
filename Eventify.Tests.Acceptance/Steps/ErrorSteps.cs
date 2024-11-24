@@ -57,7 +57,8 @@ public class ErrorSteps(ErrorDriver errorDriver)
             if (error.HttpStatusCode != expectedStatusCode)
             {
                 throw new AssertionFailedException(
-                    $"Expected to have {expectedStatusCode} status code but have {error.HttpStatusCode}");
+                    $"Expected to have {expectedStatusCode} status code but have {error.HttpStatusCode}"
+                );
             }
         }
 

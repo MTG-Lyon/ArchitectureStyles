@@ -12,6 +12,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IListAllEventsUseCase, ListAllEventsUseCase>();
         services.AddScoped<IDescribeEventUseCase, DescribeEventUseCase>();
         services.AddScoped<IPublishEventUseCase, PublishEventUseCase>();
+        services.AddScoped<IJoinEventUseCase, JoinEventUseCase>();
 
         return services;
     }
