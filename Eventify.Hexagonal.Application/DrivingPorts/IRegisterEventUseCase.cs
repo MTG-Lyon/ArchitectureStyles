@@ -2,5 +2,5 @@ namespace Eventify.Hexagonal.Domain.DrivingPorts;
 
 public interface IRegisterEventUseCase
 {
-    Task Register(string name);
+    Task<Guid> Register(string name);
 }

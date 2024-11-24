@@ -8,7 +8,7 @@ internal class RegisterANewEventUseCase(
     IEventRepository eventRepository
 ) : IRegisterEventUseCase
 {
-    public async Task Register(string name)
+    public async Task<Guid> Register(string name)
     {
         if(await eventRepository.Exists(name))
         {
@@ -18,6 +18,8 @@ internal class RegisterANewEventUseCase(
         var @event = Event.Register(new EventName(name));
 
         await eventRepository.Save(@event);
+        
+        return @event.Id;
     }
 }
 
