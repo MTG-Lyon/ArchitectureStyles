@@ -1,4 +1,4 @@
-﻿using Eventify.Hexagonal.Domain.DrivenPorts;
+﻿using Eventify.Hexagonal.Application.DrivenPorts;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Eventify.Hexagonal.DrivenAdapters.InMemory;

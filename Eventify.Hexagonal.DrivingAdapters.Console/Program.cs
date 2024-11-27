@@ -1,6 +1,6 @@
-﻿using Eventify.Hexagonal.Domain;
-using Eventify.Hexagonal.Domain.DrivingPorts;
-using Eventify.Hexagonal.Domain.UseCases;
+﻿using Eventify.Hexagonal.Application;
+using Eventify.Hexagonal.Application.DrivingPorts;
+using Eventify.Hexagonal.Application.Models.Exceptions;
 using Eventify.Hexagonal.DrivenAdapters.InMemory;
 using Microsoft.Extensions.DependencyInjection;
 

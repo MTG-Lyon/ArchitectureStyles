@@ -1,4 +1,4 @@
-namespace Eventify.Hexagonal.Domain.DrivingPorts;
+namespace Eventify.Hexagonal.Application.DrivingPorts;
 
 public interface IJoinEventUseCase
 {

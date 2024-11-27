@@ -1,6 +1,5 @@
 using System.Text.Json;
 using Eventify.Tests.Acceptance.Configuration.TestServers;
-using Reqnroll;
 
 namespace Eventify.Tests.Acceptance.Configuration;
 
@@ -8,10 +7,11 @@ public class TestApplication(
     HexagonalTestServer hexagonalTestServer,
     CleanTestServer cleanTestServer,
     VerticalSliceTestServer verticalSliceTestServer,
-    FeatureInfo featureInfo,
     ErrorDriver errorDriver
 )
 {
+    private const string TestServerName = "VerticalSlice";
+    
     private TestHttpClient? _client;
     private ITestServer? _testServer;
 
@@ -41,7 +41,7 @@ public class TestApplication(
     {
         foreach (var testServer in AllTestServers)
         {
-            if (featureInfo.Tags.Contains(testServer.Name))
+            if (testServer.Name == TestServerName)
             {
                 return testServer;
             }

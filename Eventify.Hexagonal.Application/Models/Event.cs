@@ -1,4 +1,6 @@
-namespace Eventify.Hexagonal.Domain.Models;
+using Eventify.Hexagonal.Application.Models.Exceptions;
+
+namespace Eventify.Hexagonal.Application.Models;
 
 public class Event
 {
@@ -71,5 +73,3 @@ public class Event
         _participants.Add(participant);
     }
 }
-
-public record Participant(EmailAddress EmailAddress);

@@ -1,9 +1,9 @@
-using Eventify.Hexagonal.Domain.DrivenPorts;
-using Eventify.Hexagonal.Infrastructure.Adapters;
+using Eventify.Hexagonal.Application.DrivenPorts;
+using Eventify.Hexagonal.DrivenAdapters.Sql.Adapters;
 using Eventify.Infrastructure.Database;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Eventify.Hexagonal.Infrastructure;
+namespace Eventify.Hexagonal.DrivenAdapters.Sql;
 
 public static class ServiceCollectionExtensions
 {

@@ -1,10 +1,10 @@
-using Eventify.Hexagonal.Domain.DrivenPorts;
-using Eventify.Hexagonal.Domain.Models;
-using Eventify.Hexagonal.Domain.UseCases;
+using Eventify.Hexagonal.Application.DrivenPorts;
+using Eventify.Hexagonal.Application.Models;
+using Eventify.Hexagonal.Application.UseCases;
 using Eventify.Infrastructure.Database.Database;
 using Microsoft.EntityFrameworkCore;
 
-namespace Eventify.Hexagonal.Infrastructure.Adapters;
+namespace Eventify.Hexagonal.DrivenAdapters.Sql.Adapters;
 
 public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
 {

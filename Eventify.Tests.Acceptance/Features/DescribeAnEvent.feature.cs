@@ -19,14 +19,12 @@ namespace Eventify.Tests.Acceptance.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [Xunit.TraitAttribute("Category", "Hexagonal")]
     public partial class DescribeAnEventFeature : object, Xunit.IClassFixture<DescribeAnEventFeature.FixtureData>, Xunit.IAsyncLifetime
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
-        private static string[] featureTags = new string[] {
-                "Hexagonal"};
+        private static string[] featureTags = ((string[])(null));
         
         private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Describe an event", "In order to make the event attractive\nAs a organizer\nI want to describe the event" +
                 "", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
@@ -105,7 +103,7 @@ namespace Eventify.Tests.Acceptance.Features
                     "ErrorHandling"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Cannot describe an unknown event", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 11
+#line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -115,10 +113,10 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 12
+#line 8
     await testRunner.WhenAsync("I describe an unknown event", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 13
+#line 9
     await testRunner.ThenAsync("a not found error occurred", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -133,7 +131,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("New description is listed in the event list", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 15
+#line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -143,10 +141,10 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 16
+#line 12
     await testRunner.GivenAsync("a new event \"Software Maintenance Costs\" created", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 17
+#line 13
     await testRunner.WhenAsync("I describe the event \"Software Maintenance Costs\" with \"This event will be organi" +
                         "zed by M. Gourou\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
@@ -156,7 +154,7 @@ this.ScenarioInitialize(scenarioInfo);
                 table1.AddRow(new string[] {
                             "Software Maintenance Costs",
                             "This event will be organized by M. Gourou"});
-#line 18
+#line 14
     await testRunner.ThenAsync("the event list is", ((string)(null)), table1, "Then ");
 #line hidden
             }

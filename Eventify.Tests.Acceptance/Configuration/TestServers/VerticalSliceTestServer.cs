@@ -1,4 +1,4 @@
-using Eventify.VerticalSliced.Api;
+using Eventify.VerticalSlice;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;

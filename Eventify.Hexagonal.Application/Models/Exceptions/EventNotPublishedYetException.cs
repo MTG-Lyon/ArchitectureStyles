@@ -1,3 +1,3 @@
-namespace Eventify.Hexagonal.Domain.Models;
+namespace Eventify.Hexagonal.Application.Models.Exceptions;
 
 public class EventNotPublishedYetException(string message) : Exception(message);

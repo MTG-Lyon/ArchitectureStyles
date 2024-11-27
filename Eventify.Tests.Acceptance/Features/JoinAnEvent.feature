@@ -1,7 +1,3 @@
-@Hexagonal
-#@Clean
-#@VerticalSlice
-
 Feature: Join an event
 In order to indicate I want to join an event
 As a participant

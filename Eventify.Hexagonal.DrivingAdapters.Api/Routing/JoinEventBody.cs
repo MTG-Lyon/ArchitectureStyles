@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Eventify.Hexagonal.Api.Routing;
+namespace Eventify.Hexagonal.DrivingAdapters.Api.Routing;
 
 public class JoinEventBody
 {

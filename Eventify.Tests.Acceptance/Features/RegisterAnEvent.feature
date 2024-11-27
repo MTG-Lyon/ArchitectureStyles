@@ -1,7 +1,3 @@
-@Hexagonal
-#@Clean
-#@VerticalSlice
-
 Feature: Create a new event
 In order to gather participants around a specific topic
 As a organizer

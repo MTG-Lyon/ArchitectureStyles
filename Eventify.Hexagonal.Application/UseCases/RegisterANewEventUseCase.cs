@@ -1,8 +1,9 @@
-using Eventify.Hexagonal.Domain.DrivenPorts;
-using Eventify.Hexagonal.Domain.DrivingPorts;
-using Eventify.Hexagonal.Domain.Models;
+using Eventify.Hexagonal.Application.DrivenPorts;
+using Eventify.Hexagonal.Application.DrivingPorts;
+using Eventify.Hexagonal.Application.Models;
+using Eventify.Hexagonal.Application.Models.Exceptions;
 
-namespace Eventify.Hexagonal.Domain.UseCases;
+namespace Eventify.Hexagonal.Application.UseCases;
 
 internal class RegisterANewEventUseCase(
     IEventRepository eventRepository
@@ -22,5 +23,3 @@ internal class RegisterANewEventUseCase(
         return @event.Id;
     }
 }
-
-public class EventWithSameNameAlreadyExistsException(string message) : Exception(message);

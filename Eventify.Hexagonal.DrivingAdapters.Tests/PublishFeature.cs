@@ -1,7 +1,7 @@
-using Eventify.Hexagonal.Domain;
-using Eventify.Hexagonal.Domain.DrivenPorts;
-using Eventify.Hexagonal.Domain.DrivingPorts;
-using Eventify.Hexagonal.Domain.Models;
+using Eventify.Hexagonal.Application;
+using Eventify.Hexagonal.Application.DrivenPorts;
+using Eventify.Hexagonal.Application.DrivingPorts;
+using Eventify.Hexagonal.Application.Models.Exceptions;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 

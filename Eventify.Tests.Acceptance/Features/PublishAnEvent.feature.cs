@@ -19,14 +19,12 @@ namespace Eventify.Tests.Acceptance.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [Xunit.TraitAttribute("Category", "Hexagonal")]
     public partial class PublishAnEventFeature : object, Xunit.IClassFixture<PublishAnEventFeature.FixtureData>, Xunit.IAsyncLifetime
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
-        private static string[] featureTags = new string[] {
-                "Hexagonal"};
+        private static string[] featureTags = ((string[])(null));
         
         private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Publish an event", "In order to allow participants to join an event\nAs a organizer\nI want to publish " +
                 "an event", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
@@ -103,7 +101,7 @@ namespace Eventify.Tests.Acceptance.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Publish status is displayed on the event list", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 10
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -113,10 +111,10 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 11
+#line 7
     await testRunner.GivenAsync("a new event \"Software Maintenance Costs\" created", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 12
+#line 8
     await testRunner.WhenAsync("I publish the event \"Software Maintenance Costs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
                 global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
@@ -125,7 +123,7 @@ this.ScenarioInitialize(scenarioInfo);
                 table3.AddRow(new string[] {
                             "Software Maintenance Costs",
                             "Published"});
-#line 13
+#line 9
     await testRunner.ThenAsync("the event list is", ((string)(null)), table3, "Then ");
 #line hidden
             }
@@ -142,7 +140,7 @@ this.ScenarioInitialize(scenarioInfo);
                     "ErrorHandling"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Cannot publish an already published event", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 18
+#line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -152,16 +150,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 19
+#line 15
     await testRunner.GivenAsync("a new event \"Software Maintenance Costs\" created", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 20
+#line 16
     await testRunner.WhenAsync("I publish the event \"Software Maintenance Costs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 21
+#line 17
     await testRunner.AndAsync("I publish the event \"Software Maintenance Costs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 22
+#line 18
     await testRunner.ThenAsync("a forbidden error occurred with message \"The event is already published\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }

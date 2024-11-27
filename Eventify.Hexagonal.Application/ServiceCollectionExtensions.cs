@@ -1,18 +1,18 @@
-﻿using Eventify.Hexagonal.Domain.DrivingPorts;
-using Eventify.Hexagonal.Domain.UseCases;
+﻿using Eventify.Hexagonal.Application.DrivingPorts;
+using Eventify.Hexagonal.Application.UseCases;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Eventify.Hexagonal.Domain;
+namespace Eventify.Hexagonal.Application;
 
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection RegisterApplication(this IServiceCollection services)
     {
-        services.AddScoped<IRegisterEventUseCase, RegisterANewEventUseCase>();
-        services.AddScoped<IListAllEventsUseCase, ListAllEventsUseCase>();
-        services.AddScoped<IDescribeEventUseCase, DescribeEventUseCase>();
-        services.AddScoped<IPublishEventUseCase, PublishEventUseCase>();
-        services.AddScoped<IJoinEventUseCase, JoinEventUseCase>();
+        services.AddTransient<IRegisterEventUseCase, RegisterANewEventUseCase>();
+        services.AddTransient<IListAllEventsUseCase, ListAllEventsUseCase>();
+        services.AddTransient<IDescribeEventUseCase, DescribeEventUseCase>();
+        services.AddTransient<IPublishEventUseCase, PublishEventUseCase>();
+        services.AddTransient<IJoinEventUseCase, JoinEventUseCase>();
 
         return services;
     }

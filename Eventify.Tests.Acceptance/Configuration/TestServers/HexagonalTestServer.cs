@@ -1,4 +1,4 @@
-using Eventify.Hexagonal.Api;
+using Eventify.Hexagonal.DrivingAdapters.Api;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,3 +1,3 @@
-namespace Eventify.Hexagonal.Infrastructure.Adapters;
+namespace Eventify.Hexagonal.DrivenAdapters.Sql.Adapters;
 
 public class EntityNotFoundException(string message) : Exception(message);

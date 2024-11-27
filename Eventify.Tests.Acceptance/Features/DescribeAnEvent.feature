@@ -1,7 +1,3 @@
-@Hexagonal
-#@Clean
-#@VerticalSlice
-
 Feature: Describe an event
 In order to make the event attractive
 As a organizer

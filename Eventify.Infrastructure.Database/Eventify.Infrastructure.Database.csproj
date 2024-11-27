@@ -12,7 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Eventify.Clean.Domain\Eventify.Clean.Domain.csproj" />
     </ItemGroup>
 
 </Project>

@@ -19,14 +19,12 @@ namespace Eventify.Tests.Acceptance.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [Xunit.TraitAttribute("Category", "Hexagonal")]
     public partial class JoinAnEventFeature : object, Xunit.IClassFixture<JoinAnEventFeature.FixtureData>, Xunit.IAsyncLifetime
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
-        private static string[] featureTags = new string[] {
-                "Hexagonal"};
+        private static string[] featureTags = ((string[])(null));
         
         private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Join an event", "In order to indicate I want to join an event\nAs a participant\nI want to join an e" +
                 "xisting event", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
@@ -87,9 +85,9 @@ namespace Eventify.Tests.Acceptance.Features
         
         public virtual async System.Threading.Tasks.Task FeatureBackgroundAsync()
         {
-#line 10
+#line 6
 #line hidden
-#line 11
+#line 7
     await testRunner.GivenAsync("a new event \"Software Maintenance Costs\" created", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
         }
@@ -114,7 +112,7 @@ namespace Eventify.Tests.Acceptance.Features
                     "ErrorHandling"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Cannot join an draft event", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 14
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -124,13 +122,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 10
+#line 6
 await this.FeatureBackgroundAsync();
 #line hidden
-#line 15
+#line 11
     await testRunner.WhenAsync("I join the event \"Software Maintenance Costs\" as \"john.doe@example.com\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 16
+#line 12
     await testRunner.ThenAsync("a forbidden error occurred with message \"The event is not published yet\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -145,7 +143,7 @@ await this.FeatureBackgroundAsync();
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Once joined, participants can be listed", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 18
+#line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -155,20 +153,20 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 10
+#line 6
 await this.FeatureBackgroundAsync();
 #line hidden
-#line 19
+#line 15
     await testRunner.GivenAsync("the event \"Software Maintenance Costs\" is published", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 20
+#line 16
     await testRunner.WhenAsync("I join the event \"Software Maintenance Costs\" as \"john.doe@example.com\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
                 global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
                             "Email address"});
                 table2.AddRow(new string[] {
                             "john.doe@example.com"});
-#line 21
+#line 17
     await testRunner.ThenAsync("the \"Software Maintenance Costs\" event participant list is", ((string)(null)), table2, "Then ");
 #line hidden
             }
@@ -185,7 +183,7 @@ await this.FeatureBackgroundAsync();
                     "ErrorHandling"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Cannot join an event twice", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 26
+#line 22
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -195,19 +193,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 10
+#line 6
 await this.FeatureBackgroundAsync();
 #line hidden
-#line 27
+#line 23
     await testRunner.GivenAsync("the event \"Software Maintenance Costs\" is published", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 28
+#line 24
     await testRunner.WhenAsync("I join the event \"Software Maintenance Costs\" as \"john.doe@example.com\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 29
+#line 25
     await testRunner.AndAsync("I join the event \"Software Maintenance Costs\" as \"john.doe@example.com\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 30
+#line 26
     await testRunner.ThenAsync("a forbidden error occurred with message \"The participant has already joined\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -224,7 +222,7 @@ await this.FeatureBackgroundAsync();
                     "ErrorHandling"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("By default, events have a max participant limit to 10", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 33
+#line 29
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -234,19 +232,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 10
+#line 6
 await this.FeatureBackgroundAsync();
 #line hidden
-#line 34
+#line 30
     await testRunner.GivenAsync("the event \"Software Maintenance Costs\" is published", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 35
+#line 31
     await testRunner.AndAsync("10 participants have joined the event \"Software Maintenance Costs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 36
+#line 32
     await testRunner.WhenAsync("I join the event \"Software Maintenance Costs\" as \"john.doe@example.com\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 37
+#line 33
     await testRunner.ThenAsync("a forbidden error occurred with message \"The event has reached its maximum partic" +
                         "ipant limit\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden

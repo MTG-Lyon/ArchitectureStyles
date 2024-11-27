@@ -1,7 +1,7 @@
-using Eventify.Hexagonal.Domain.Models;
-using Eventify.Hexagonal.Domain.UseCases;
+using Eventify.Hexagonal.Application.Models;
+using Eventify.Hexagonal.Application.UseCases;
 
-namespace Eventify.Hexagonal.Domain.DrivenPorts;
+namespace Eventify.Hexagonal.Application.DrivenPorts;
 
 public interface IEventRepository
 {

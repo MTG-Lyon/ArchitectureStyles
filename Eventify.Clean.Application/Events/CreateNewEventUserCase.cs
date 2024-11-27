@@ -1,6 +1,6 @@
-using Eventify.Clean.Domain;
-using Event = Eventify.Clean.Domain.Event;
-using EventName = Eventify.Clean.Domain.EventName;
+using Eventify.Clean.Entities;
+using Event = Eventify.Clean.Entities.Event;
+using EventName = Eventify.Clean.Entities.EventName;
 
 namespace Eventify.Clean.Application.Events;
 

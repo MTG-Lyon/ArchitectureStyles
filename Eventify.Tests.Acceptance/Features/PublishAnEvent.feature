@@ -1,7 +1,3 @@
-@Hexagonal
-#@Clean
-#@VerticalSlice
-
 Feature: Publish an event
 In order to allow participants to join an event
 As a organizer

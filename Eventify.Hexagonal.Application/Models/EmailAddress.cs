@@ -1,4 +1,4 @@
-namespace Eventify.Hexagonal.Domain.Models;
+namespace Eventify.Hexagonal.Application.Models;
 
 public record EmailAddress(string Value)
 {

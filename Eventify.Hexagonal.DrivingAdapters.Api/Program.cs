@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
-using Eventify.Hexagonal.Api.Routing;
-using Eventify.Hexagonal.Domain;
-using Eventify.Hexagonal.Infrastructure;
+using Eventify.Hexagonal.Application;
+using Eventify.Hexagonal.DrivenAdapters.Sql;
+using Eventify.Hexagonal.DrivingAdapters.Api.Routing;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +31,7 @@ new RouteConfigurator(app).MapRoutes();
 
 app.Run();
 
-namespace Eventify.Hexagonal.Api
+namespace Eventify.Hexagonal.DrivingAdapters.Api
 {
     public class Program;
 }

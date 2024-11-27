@@ -1,4 +1,4 @@
-using Eventify.Clean.Domain;
+using Eventify.Clean.Entities;
 
 namespace Eventify.Clean.Application.Events;
 

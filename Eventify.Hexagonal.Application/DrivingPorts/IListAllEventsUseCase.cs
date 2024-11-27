@@ -1,6 +1,6 @@
-using Eventify.Hexagonal.Domain.UseCases;
+using Eventify.Hexagonal.Application.UseCases;
 
-namespace Eventify.Hexagonal.Domain.DrivingPorts;
+namespace Eventify.Hexagonal.Application.DrivingPorts;
 
 public interface IListAllEventsUseCase
 {

@@ -1,10 +1,9 @@
-using Eventify.Hexagonal.Domain.DrivingPorts;
-using Eventify.Hexagonal.Domain.Models;
-using Eventify.Hexagonal.Domain.UseCases;
-using Eventify.Hexagonal.Infrastructure.Adapters;
+using Eventify.Hexagonal.Application.DrivingPorts;
+using Eventify.Hexagonal.Application.Models.Exceptions;
+using Eventify.Hexagonal.DrivenAdapters.Sql.Adapters;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Eventify.Hexagonal.Api.Routing;
+namespace Eventify.Hexagonal.DrivingAdapters.Api.Routing;
 
 public class RouteConfigurator(WebApplication app)
 {

@@ -29,9 +29,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Eventify.Clean.Api\Eventify.Clean.Api.csproj" />
+      <ProjectReference Include="..\Eventify.Clean.Presentation\Eventify.Clean.Presentation.csproj" />
       <ProjectReference Include="..\Eventify.Hexagonal.DrivingAdapters.Api\Eventify.Hexagonal.DrivingAdapters.Api.csproj" />
-      <ProjectReference Include="..\Eventify.VerticalSliced.Api\Eventify.VerticalSliced.Api.csproj" />
+      <ProjectReference Include="..\Eventify.VerticalSlice\Eventify.VerticalSlice.csproj" />
     </ItemGroup>
 
     <ItemGroup>
