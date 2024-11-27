@@ -1,4 +1,4 @@
-using Eventify.VerticalSlice.Infrastructure;
+using Eventify.VerticalSlice.Shared.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eventify.VerticalSlice.UseCases.DescribeEvent;

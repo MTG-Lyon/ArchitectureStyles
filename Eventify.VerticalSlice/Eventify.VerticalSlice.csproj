@@ -16,4 +16,8 @@
       <ProjectReference Include="..\Eventify.Infrastructure.Database\Eventify.Infrastructure.Database.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Shared\" />
+    </ItemGroup>
+
 </Project>

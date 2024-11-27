@@ -1,4 +1,4 @@
-using Eventify.VerticalSlice.Domain.Exceptions.Base;
+using Eventify.VerticalSlice.Shared.Domain.Exceptions.Base;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eventify.VerticalSlice.UseCases.CreateNewEvent;

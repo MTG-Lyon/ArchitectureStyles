@@ -1,5 +1,5 @@
-using Eventify.VerticalSlice.Domain.Exceptions.Base;
-using Eventify.VerticalSlice.Infrastructure;
+using Eventify.VerticalSlice.Shared.Domain.Exceptions.Base;
+using Eventify.VerticalSlice.Shared.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eventify.VerticalSlice.UseCases.CommentEvent;

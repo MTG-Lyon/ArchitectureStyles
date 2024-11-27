@@ -1,4 +1,4 @@
-using Eventify.VerticalSlice.Infrastructure;
+using Eventify.VerticalSlice.Shared.Infrastructure;
 
 namespace Eventify.VerticalSlice.UseCases.CommentEvent;
 

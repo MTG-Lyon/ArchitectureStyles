@@ -1,5 +1,5 @@
 using Eventify.VerticalSlice;
-using Eventify.VerticalSlice.Domain;
+using Eventify.VerticalSlice.Shared.Domain;
 using Eventify.VerticalSlice.UseCases.CommentEvent;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;

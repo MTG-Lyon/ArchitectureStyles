@@ -1,4 +1,4 @@
-using Eventify.VerticalSlice.Domain;
+using Eventify.VerticalSlice.Shared.Domain;
 
 namespace Eventify.VerticalSlice.UseCases.DescribeEvent;
 

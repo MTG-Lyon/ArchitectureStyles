@@ -1,4 +1,4 @@
-using Eventify.VerticalSlice.Domain.Exceptions.Base;
+using Eventify.VerticalSlice.Shared.Domain.Exceptions.Base;
 
 namespace Eventify.VerticalSlice.UseCases.CreateNewEvent;
 

@@ -1,6 +1,6 @@
-using Eventify.VerticalSlice.Domain.Exceptions;
+using Eventify.VerticalSlice.Shared.Domain.Exceptions;
 
-namespace Eventify.VerticalSlice.Domain;
+namespace Eventify.VerticalSlice.Shared.Domain;
 
 public class Event
 {

@@ -1,11 +1,11 @@
 using Eventify.Infrastructure.Database.Database;
-using Eventify.VerticalSlice.Domain;
+using Eventify.VerticalSlice.Shared.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Eventify.VerticalSlice.Infrastructure;
+namespace Eventify.VerticalSlice.Shared.Infrastructure;
 
 public class SqlEventRepository(EventifyDbContext dbContext) : 
-    UseCases.CreateNewEvent.IEventRepository, 
+    UseCases.CreateNewEvent.IEventRepository,
     UseCases.DescribeEvent.IEventRepository, 
     UseCases.JoinEvent.IEventRepository, 
     UseCases.PublishEvent.IEventRepository, 
@@ -89,10 +89,4 @@ public class SqlEventRepository(EventifyDbContext dbContext) :
 
         await dbContext.SaveChangesAsync();
     }
-
-
-    public async Task<bool> Exists(string name) =>
-        await dbContext.Events.AnyAsync(x => x.Name == name);
 }
-
-public class EntityNotFoundException(string value) : Exception(value);

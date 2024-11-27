@@ -1,4 +1,4 @@
-using Eventify.VerticalSlice.Infrastructure;
+using Eventify.VerticalSlice.Shared.Infrastructure;
 
 namespace Eventify.VerticalSlice.UseCases.CreateNewEvent;
 
@@ -9,6 +9,7 @@ public static class DependencyInjection
         services
             .AddTransient<UseCase>()
             .AddTransient<IEventRepository, SqlEventRepository>()
+            .AddTransient<IForCheckingEventExists, ForCreatingEventRepository>()
             ;
         
         return services;

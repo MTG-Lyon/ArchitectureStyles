@@ -1,4 +1,4 @@
-namespace Eventify.VerticalSlice.Domain;
+namespace Eventify.VerticalSlice.Shared.Domain;
 
 public record EmailAddress(string Value)
 {
