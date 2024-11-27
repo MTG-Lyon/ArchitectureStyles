@@ -117,14 +117,14 @@ this.ScenarioInitialize(scenarioInfo);
 #line 8
     await testRunner.WhenAsync("I publish the event \"Software Maintenance Costs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
                             "Name",
                             "Status"});
-                table3.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "Software Maintenance Costs",
                             "Published"});
 #line 9
-    await testRunner.ThenAsync("the event list is", ((string)(null)), table3, "Then ");
+    await testRunner.ThenAsync("the event list is", ((string)(null)), table5, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

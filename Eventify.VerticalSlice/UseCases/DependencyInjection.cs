@@ -1,5 +1,7 @@
+using Eventify.VerticalSlice.UseCases.CommentEvent;
 using Eventify.VerticalSlice.UseCases.CreateNewEvent;
 using Eventify.VerticalSlice.UseCases.DescribeEvent;
+using Eventify.VerticalSlice.UseCases.GetEventDetails;
 using Eventify.VerticalSlice.UseCases.JoinEvent;
 using Eventify.VerticalSlice.UseCases.ListExistingEvents;
 using Eventify.VerticalSlice.UseCases.PublishEvent;
@@ -16,6 +18,8 @@ public static class DependencyInjection
             .RegisterDescribeEventUseCase()
             .RegisterPublishEventUseCase()
             .RegisterJoinEventUseCase()
+            .RegisterCommentEventUseCase()
+            .RegisterGetEventDetailsUseCase()
             ;
         
         return services;

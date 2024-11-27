@@ -12,5 +12,10 @@ public class EventifyDbContext(DbContextOptions options) : DbContext(options)
             .Entity<EventEntity>()
             .HasMany<ParticipantEntity>(x => x.Participants)
             .WithOne(x => x.Event);
+        
+        modelBuilder
+            .Entity<EventEntity>()
+            .HasMany<CommentEntity>(x => x.Comments)
+            .WithOne(x => x.Event);
     }
 }

@@ -5,7 +5,7 @@ using Reqnroll.Extensions.FluentTableAsserter;
 namespace Eventify.Tests.Acceptance.Steps;
 
 [Binding]
-public class EventSteps(TestApplication application)
+public class EventSteps(TestApplication application, TestFinder finder)
 {
     [Given(@"a new event ""(.*)"" created")]
     [When(@"I create a new event ""(.*)""")]
@@ -19,7 +19,7 @@ public class EventSteps(TestApplication application)
     [When(@"I describe the event ""(.*)"" with ""(.*)""")]
     public async Task WhenIDescribeTheEventWith(string eventName, string description)
     {
-        var eventId = await GetEventId(eventName);
+        var eventId = await finder.GetEventId(eventName);
 
         await DescribeEvent(eventId, description);
     }
@@ -28,15 +28,16 @@ public class EventSteps(TestApplication application)
     [When(@"I publish the event ""(.*)""")]
     public async Task WhenIPublishTheEvent(string eventName)
     {
-        var eventId = await GetEventId(eventName);
+        var eventId = await finder.GetEventId(eventName);
         
         await PublishEvent(eventId);
     }
     
+    [Given(@"the event ""(.*)"" has been joined by ""(.*)""")]
     [When(@"I join the event ""(.*)"" as ""(.*)""")]
     public async Task WhenIJoinTheEventAs(string eventName, string participantEmailAddress)
     {
-        var eventId = await GetEventId(eventName);
+        var eventId = await finder.GetEventId(eventName);
         
         await JoinEvent(eventId, participantEmailAddress);
     }
@@ -44,7 +45,7 @@ public class EventSteps(TestApplication application)
     [Given(@"(.*) participants have joined the event ""(.*)""")]
     public async Task GivenParticipantsHaveJoinedTheEvent(int count, string eventName)
     {
-        var eventId = await GetEventId(eventName);
+        var eventId = await finder.GetEventId(eventName);
         
         foreach (var _ in Enumerable.Range(0, count))
         {
@@ -76,15 +77,6 @@ public class EventSteps(TestApplication application)
             .CollectionShouldBeEquivalentToTable(table)
             .WithProperty(x => x.EmailAddress)
             .Assert();
-    }
-
-    private async Task<Guid> GetEventId(string eventName)
-    {
-        var events = await ListEvents();
-
-        return events!
-            .First(x => x.Name == eventName)
-            .Id;
     }
 
     private Task<IReadOnlyCollection<EventListItemTestDto>?> ListEvents() =>

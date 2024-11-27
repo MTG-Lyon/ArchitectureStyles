@@ -1,25 +1,25 @@
+using Eventify.VerticalSlice.Domain.Exceptions.Base;
 using Eventify.VerticalSlice.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Eventify.VerticalSlice.UseCases.DescribeEvent;
+namespace Eventify.VerticalSlice.UseCases.CommentEvent;
 
 [ApiController]
 [Route("events")]
 [Produces("application/json")]
-public class Controller(IEventRepository eventRepository) : ControllerBase
+public class Controller(UseCase useCase) : ControllerBase
 {
-    [HttpPut("{eventId}/describe")]
+    [HttpPost("{eventId}/comments")]
     public async Task<IActionResult> CreateNewEvent([FromRoute] Guid eventId, [FromBody] Body body)
     {
         try
         {
-            var @event = await eventRepository.Get(eventId);
-
-            @event.Describe(body.Description);
-
-            await eventRepository.Save(@event);
-            
+            await useCase.CommentEvent(eventId, body.Commenter, body.Comment);
             return Ok();
+        }
+        catch(Exception e) when(e is IDomainException)
+        {
+            return Problem(statusCode: 403, title: e.Message);
         }
         catch (EntityNotFoundException e)
         { 

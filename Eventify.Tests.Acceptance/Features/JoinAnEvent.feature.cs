@@ -162,12 +162,12 @@ await this.FeatureBackgroundAsync();
 #line 16
     await testRunner.WhenAsync("I join the event \"Software Maintenance Costs\" as \"john.doe@example.com\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
                             "Email address"});
-                table2.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "john.doe@example.com"});
 #line 17
-    await testRunner.ThenAsync("the \"Software Maintenance Costs\" event participant list is", ((string)(null)), table2, "Then ");
+    await testRunner.ThenAsync("the \"Software Maintenance Costs\" event participant list is", ((string)(null)), table4, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

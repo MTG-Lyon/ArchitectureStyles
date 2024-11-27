@@ -1,7 +1,20 @@
 using System.Text.Json;
 using Eventify.Tests.Acceptance.Configuration.TestServers;
+using Eventify.Tests.Acceptance.Steps;
 
 namespace Eventify.Tests.Acceptance.Configuration;
+
+public class TestFinder(TestApplication application)
+{
+    public async Task<Guid> GetEventId(string eventName)
+    {
+        var events = await application.Client.Get<IReadOnlyCollection<EventListItemTestDto>>("/events");
+        
+        return events!
+            .Single(x => x.Name == eventName)
+            .Id;
+    }
+}
 
 public class TestApplication(
     HexagonalTestServer hexagonalTestServer,
@@ -20,6 +33,8 @@ public class TestApplication(
         hexagonalTestServer, 
         verticalSliceTestServer
     ];
+    
+    public ITestServer Server => _testServer ?? throw new InvalidOperationException("Test server not initialized");
 
     public TestHttpClient Client => _client
         ??= new TestHttpClient(
@@ -49,5 +64,4 @@ public class TestApplication(
 
         throw new InvalidOperationException("No test server found");
     }
-
 }

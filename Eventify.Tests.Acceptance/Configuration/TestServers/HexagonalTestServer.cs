@@ -1,8 +1,10 @@
+using Eventify.Hexagonal.Application.DrivenPorts;
 using Eventify.Hexagonal.DrivingAdapters.Api;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using NSubstitute;
 using Reqnroll;
 
 namespace Eventify.Tests.Acceptance.Configuration.TestServers;
@@ -30,6 +32,7 @@ public class HexagonalTestServer(
             .ConfigureServices(services =>
             {
                 services.ReplaceWithInMemoryDatabase(databaseName);
+                services.AddSingleton<IClock>(_ => Substitute.For<IClock>());
             })
             ;
     }
@@ -48,4 +51,16 @@ public class HexagonalTestServer(
 
         return Task.CompletedTask;
     }
+
+    public T GetService<T>() where T : notnull =>
+        Services.GetRequiredService<T>();
+
+    public void OverrideCurrentDate(DateTime now) =>
+        Services.GetRequiredService<IClock>().Now().Returns(now);
+
+    public DateTime GetCurrentDate() =>
+        Services.GetRequiredService<IClock>().Now();
+
+    public EmailTest GetLastSentEmailTo(string toEmail) =>
+        throw new NotImplementedException();
 }

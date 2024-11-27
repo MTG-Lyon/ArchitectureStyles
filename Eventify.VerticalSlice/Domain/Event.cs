@@ -7,13 +7,15 @@ public class Event
     private const int MaxParticipantCount = 10;
     
     private readonly List<Participant> _participants;
+    private readonly List<EventComment> _comments;
 
     private Event(
         Guid id,
         EventName name,
         string description,
         EventStatus status,
-        IReadOnlyCollection<Participant> participants
+        IReadOnlyCollection<Participant> participants,
+        IReadOnlyCollection<EventComment> comments
     )
     {
         Id = id;
@@ -21,6 +23,7 @@ public class Event
         Description = description;
         Status = status;
         _participants = participants.ToList();
+        _comments = comments.ToList();
     }
     
     public Guid Id { get; set; }
@@ -28,18 +31,27 @@ public class Event
     public string Description { get; private set; }
     public EventStatus Status { get; private set; }
     public IReadOnlyCollection<Participant> Participants => _participants;
+    public IReadOnlyCollection<EventComment> Comments => _comments;
     
     public static Event Register(EventName name) => 
-        new(Guid.NewGuid(), name, string.Empty, EventStatus.Draft, new List<Participant>());
+        new(
+            Guid.NewGuid(),
+            name,
+            string.Empty,
+            EventStatus.Draft,
+            new List<Participant>(),
+            new List<EventComment>()
+        );
 
     public static Event Rehydrate(
         Guid id,
         EventName name,
         string description,
         EventStatus status,
-        IReadOnlyCollection<Participant> participants
+        IReadOnlyCollection<Participant> participants,
+        IReadOnlyCollection<EventComment> comments
     ) =>
-        new(id, name, description, status, participants);
+        new(id, name, description, status, participants, comments);
 
     public void Describe(string description) =>
         Description = description;
@@ -71,5 +83,15 @@ public class Event
         }
         
         _participants.Add(participant);
+    }
+
+    public void AddComment(EventComment eventComment)
+    {
+        if(!_participants.Contains(eventComment.Commenter))
+        {
+            throw new CannotCommentEventException("A user who has not joined the event cannot comment on it");
+        }
+        
+        _comments.Add(eventComment);
     }
 }

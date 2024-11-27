@@ -15,6 +15,7 @@
         <PackageReference Include="Crafty.Reqnroll.Extensions.FluentTableAsserter" Version="3.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0"/>
+        <PackageReference Include="NSubstitute" Version="5.3.0" />
         <PackageReference Include="Reqnroll" Version="2.2.1" />
         <PackageReference Include="Reqnroll.xUnit" Version="2.2.1" />
         <PackageReference Include="xunit" Version="2.4.2"/>
@@ -49,6 +50,12 @@
       </Compile>
       <Compile Update="Features\JoinAnEvent.feature.cs">
         <DependentUpon>JoinAnEvent.feature</DependentUpon>
+        <AutoGen>true</AutoGen>
+        <DesignTime>true</DesignTime>
+        <Visible>true</Visible>
+      </Compile>
+      <Compile Update="Features\CommentAnEvent.feature.cs">
+        <DependentUpon>CommentAnEvent.feature</DependentUpon>
         <AutoGen>true</AutoGen>
         <DesignTime>true</DesignTime>
         <Visible>true</Visible>

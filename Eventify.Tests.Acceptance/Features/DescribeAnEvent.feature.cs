@@ -148,14 +148,14 @@ this.ScenarioInitialize(scenarioInfo);
     await testRunner.WhenAsync("I describe the event \"Software Maintenance Costs\" with \"This event will be organi" +
                         "zed by M. Gourou\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
                             "Name",
                             "Description"});
-                table1.AddRow(new string[] {
+                table3.AddRow(new string[] {
                             "Software Maintenance Costs",
                             "This event will be organized by M. Gourou"});
 #line 14
-    await testRunner.ThenAsync("the event list is", ((string)(null)), table1, "Then ");
+    await testRunner.ThenAsync("the event list is", ((string)(null)), table3, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
