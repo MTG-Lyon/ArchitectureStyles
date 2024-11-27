@@ -1,4 +1,5 @@
 using Eventify.Hexagonal.Application.DrivenPorts;
+using Eventify.Hexagonal.Application.DrivingPorts;
 using Eventify.Hexagonal.Application.Models;
 using Eventify.Hexagonal.Application.UseCases;
 
@@ -40,5 +41,20 @@ internal class InMemoryEventRepository : IEventRepository
     {
         var exists = _events.Values.Any(x => x.Name.Value == name);
         return Task.FromResult(exists);
+    }
+
+    public Task<EventDetailsDto> GetDetails(Guid eventId)
+    {
+        var result = _events.Values
+            .Where(x => x.Id == eventId)
+            .Select(x => new EventDetailsDto(
+                x.Comments
+                    .Select(c => new CommentDto(c.Date, c.Commenter.EmailAddress.Value, c.Comment))
+                    .OrderBy(c => c.Date)
+                    .ToList()
+            ))
+            .Single();
+        
+        return Task.FromResult(result);
     }
 }

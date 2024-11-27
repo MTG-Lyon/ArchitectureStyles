@@ -1,5 +1,7 @@
+using System.ComponentModel.DataAnnotations;
 using Eventify.Hexagonal.Application.DrivingPorts;
 using Eventify.Hexagonal.Application.Models.Exceptions;
+using Eventify.Hexagonal.Application.Models.Exceptions.Base;
 using Eventify.Hexagonal.DrivenAdapters.Sql.Adapters;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +22,7 @@ public class RouteConfigurator(WebApplication app)
                 await useCase.Register(body.Name);
                 return Results.Ok();
             }
-            catch (EventWithSameNameAlreadyExistsException e)
+            catch (Exception e) when(e is IDomainException)
             {
                 return Results.Problem(statusCode: 403, title: e.Message);
             }
@@ -49,6 +51,10 @@ public class RouteConfigurator(WebApplication app)
 
                     return Results.Ok();
                 }
+                catch (Exception e) when(e is IDomainException)
+                {
+                    return Results.Problem(statusCode: 403, title: e.Message);
+                }
                 catch (EntityNotFoundException e)
                 {
                     return Results.Problem(statusCode: 404, title: e.Message);
@@ -67,7 +73,7 @@ public class RouteConfigurator(WebApplication app)
 
                     return Results.Ok();
                 }
-                catch (EventAlreadyPublishedException e)
+                catch (Exception e) when(e is IDomainException)
                 {
                     return Results.Problem(statusCode: 403, title: e.Message);
                 }
@@ -90,15 +96,7 @@ public class RouteConfigurator(WebApplication app)
 
                     return Results.Ok();
                 }
-                catch (ParticipantAlreadyJoinedException e)
-                {
-                    return Results.Problem(statusCode: 403, title: e.Message);
-                }
-                catch (EventNotPublishedYetException e)
-                {
-                    return Results.Problem(statusCode: 403, title: e.Message);
-                }
-                catch (ParticipantLimitReachedException e)
+                catch (Exception e) when(e is IDomainException)
                 {
                     return Results.Problem(statusCode: 403, title: e.Message);
                 }
@@ -107,5 +105,45 @@ public class RouteConfigurator(WebApplication app)
                     return Results.Problem(statusCode: 404, title: e.Message);
                 }
             });
+
+        app.MapPost("/events/{eventId}/comments",
+            async (
+                [FromServices] ICommentEventUseCase useCase, 
+                [FromRoute] Guid eventId,
+                [FromBody] CommentEventBody body
+            ) =>
+            {
+                try
+                {
+                    await useCase.Comment(eventId, body.Commenter, body.Comment);
+
+                    return Results.Ok();
+                }
+                catch (Exception e) when(e is IDomainException)
+                {
+                    return Results.Problem(statusCode: 403, title: e.Message);
+                }
+                catch (EntityNotFoundException e)
+                {
+                    return Results.Problem(statusCode: 404, title: e.Message);
+                }
+            });
+
+        app.MapGet("/events/{eventId}",
+            async (
+                [FromServices] IGetEventDetailsUseCase useCase, 
+                [FromRoute] Guid eventId
+            ) =>
+            {
+                var details = await useCase.GetEventDetails(eventId);
+
+                return Results.Ok(details);
+            });
     }
+}
+
+public class CommentEventBody
+{
+    [Required] public string Commenter { get; set; } = string.Empty;
+    [Required] public string Comment { get; set; } = string.Empty;
 }

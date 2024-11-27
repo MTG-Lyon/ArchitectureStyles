@@ -33,6 +33,7 @@ public class HexagonalTestServer(
             {
                 services.ReplaceWithInMemoryDatabase(databaseName);
                 services.AddSingleton<IClock>(_ => Substitute.For<IClock>());
+                services.AddSingleton<IEmailSender>(_ => Substitute.For<IEmailSender>());
             })
             ;
     }
@@ -62,5 +63,15 @@ public class HexagonalTestServer(
         Services.GetRequiredService<IClock>().Now();
 
     public EmailTest GetLastSentEmailTo(string toEmail) =>
-        throw new NotImplementedException();
+        Services
+            .GetRequiredService<IEmailSender>()
+            .ReceivedCalls()
+            .Where(x => x.GetMethodInfo().Name == nameof(IEmailSender.Send))
+            .Select(x => (Email)x.GetArguments().ElementAt(0)!)
+            .Where(x => x.To == toEmail)
+            .Select(x => new EmailTest(
+                x.Subject,
+                x.Content
+            ))
+            .SingleOrDefault() ?? throw new InvalidOperationException("No email sent to " + toEmail);
 }

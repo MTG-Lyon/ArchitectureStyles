@@ -13,6 +13,8 @@ public static class ServiceCollectionExtensions
         services.AddTransient<IDescribeEventUseCase, DescribeEventUseCase>();
         services.AddTransient<IPublishEventUseCase, PublishEventUseCase>();
         services.AddTransient<IJoinEventUseCase, JoinEventUseCase>();
+        services.AddTransient<ICommentEventUseCase, CommentEventUseCase>();
+        services.AddTransient<IGetEventDetailsUseCase, GetEventDetailsUseCase>();
 
         return services;
     }

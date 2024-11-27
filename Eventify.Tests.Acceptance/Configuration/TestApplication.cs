@@ -1,20 +1,7 @@
 using System.Text.Json;
 using Eventify.Tests.Acceptance.Configuration.TestServers;
-using Eventify.Tests.Acceptance.Steps;
 
 namespace Eventify.Tests.Acceptance.Configuration;
-
-public class TestFinder(TestApplication application)
-{
-    public async Task<Guid> GetEventId(string eventName)
-    {
-        var events = await application.Client.Get<IReadOnlyCollection<EventListItemTestDto>>("/events");
-        
-        return events!
-            .Single(x => x.Name == eventName)
-            .Id;
-    }
-}
 
 public class TestApplication(
     HexagonalTestServer hexagonalTestServer,
@@ -23,7 +10,7 @@ public class TestApplication(
     ErrorDriver errorDriver
 )
 {
-    private const string TestServerName = "VerticalSlice";
+    private const string TestServerName = "Hexagonal";
     
     private TestHttpClient? _client;
     private ITestServer? _testServer;

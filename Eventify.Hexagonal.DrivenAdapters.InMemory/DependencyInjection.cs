@@ -9,6 +9,8 @@ public static class DependencyInjection
     {
         services
             .AddSingleton<IEventRepository, InMemoryEventRepository>()
+            .AddSingleton<IEmailSender, InMemoryEmailSender>()
+            .AddSingleton<IClock, SystemClock>()
             ;
         
         return services;

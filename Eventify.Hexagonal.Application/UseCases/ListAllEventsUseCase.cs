@@ -4,7 +4,7 @@ using Eventify.Hexagonal.Application.Models;
 
 namespace Eventify.Hexagonal.Application.UseCases;
 
-public class ListAllEventsUseCase(IEventRepository eventRepository) : IListAllEventsUseCase
+internal class ListAllEventsUseCase(IEventRepository eventRepository) : IListAllEventsUseCase
 {
     public async Task<IReadOnlyCollection<EventListItemDto>> ListAll() =>
         await eventRepository.GetAll();

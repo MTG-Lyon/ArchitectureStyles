@@ -1,3 +1,4 @@
+using Eventify.Hexagonal.Application.DrivingPorts;
 using Eventify.Hexagonal.Application.Models;
 using Eventify.Hexagonal.Application.UseCases;
 
@@ -9,4 +10,5 @@ public interface IEventRepository
     Task Save(Event @event);
     Task<IReadOnlyCollection<EventListItemDto>> GetAll();
     Task<bool> Exists(string name);
+    Task<EventDetailsDto> GetDetails(Guid eventId);
 }

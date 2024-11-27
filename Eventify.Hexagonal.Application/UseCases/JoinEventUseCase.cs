@@ -4,7 +4,7 @@ using Eventify.Hexagonal.Application.Models;
 
 namespace Eventify.Hexagonal.Application.UseCases;
 
-public class JoinEventUseCase(IEventRepository eventRepository) 
+internal class JoinEventUseCase(IEventRepository eventRepository) 
     : IJoinEventUseCase
 {
     public async Task Join(Guid eventId, string emailAddress)
