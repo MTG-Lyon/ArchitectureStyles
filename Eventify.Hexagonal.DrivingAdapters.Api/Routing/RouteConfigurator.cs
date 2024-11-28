@@ -1,10 +1,9 @@
-using System.ComponentModel.DataAnnotations;
 using Eventify.Hexagonal.Application.DrivingPorts;
 using Eventify.Hexagonal.Application.DrivingPorts.Administration;
 using Eventify.Hexagonal.Application.DrivingPorts.Participation;
-using Eventify.Hexagonal.Application.Models.Exceptions;
 using Eventify.Hexagonal.Application.Models.Exceptions.Base;
 using Eventify.Hexagonal.DrivenAdapters.Sql.Adapters;
+using Eventify.Hexagonal.DrivingAdapters.Api.Routing.Bodies;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eventify.Hexagonal.DrivingAdapters.Api.Routing;
@@ -142,10 +141,4 @@ public class RouteConfigurator(WebApplication app)
                 return Results.Ok(details);
             });
     }
-}
-
-public class CommentEventBody
-{
-    [Required] public string Commenter { get; set; } = string.Empty;
-    [Required] public string Comment { get; set; } = string.Empty;
 }

@@ -10,7 +10,7 @@ public class TestApplication(
     ErrorDriver errorDriver
 )
 {
-    private const string TestServerName = "Hexagonal";
+    private const string TestServerName = "Clean";
     
     private TestHttpClient? _client;
     private ITestServer? _testServer;

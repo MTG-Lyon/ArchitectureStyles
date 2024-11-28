@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Eventify.Clean.Application\Eventify.Clean.Application.csproj" />
       <ProjectReference Include="..\Eventify.Clean.Domain\Eventify.Clean.Domain.csproj" />
       <ProjectReference Include="..\Eventify.Infrastructure.Database\Eventify.Infrastructure.Database.csproj" />
     </ItemGroup>

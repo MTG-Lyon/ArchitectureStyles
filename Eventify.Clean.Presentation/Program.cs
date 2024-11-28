@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Eventify.Clean.Application;
 using Eventify.Clean.Infrastructure;
 using Eventify.Clean.Presentation.Routing;
@@ -6,8 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.RegisterApplication();
-builder.Services.RegisterInfrastructure();
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
+
+builder.Services
+    .RegisterApplication()
+    .RegisterInfrastructure();
 
 var app = builder.Build();
 

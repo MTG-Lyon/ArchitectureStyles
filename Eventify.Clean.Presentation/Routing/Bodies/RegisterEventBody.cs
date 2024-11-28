@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Eventify.Hexagonal.DrivingAdapters.Api.Routing;
+namespace Eventify.Clean.Presentation.Routing.Bodies;
 
 public class RegisterEventBody
 {
