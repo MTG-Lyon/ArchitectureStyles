@@ -8,7 +8,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection RegisterApplication(this IServiceCollection services)
     {
         services
-            .AddTransient<CreateNewEventUserCase>()
+            .AddTransient<CreateNewEventUseCase>()
             .AddTransient<ListAllEventsUseCase>()
             ;
         

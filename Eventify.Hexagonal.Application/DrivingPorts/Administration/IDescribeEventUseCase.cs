@@ -1,4 +1,4 @@
-namespace Eventify.Hexagonal.Application.DrivingPorts;
+namespace Eventify.Hexagonal.Application.DrivingPorts.Administration;
 
 public interface IDescribeEventUseCase
 {

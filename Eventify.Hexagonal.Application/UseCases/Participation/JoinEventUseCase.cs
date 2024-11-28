@@ -1,8 +1,8 @@
 using Eventify.Hexagonal.Application.DrivenPorts;
-using Eventify.Hexagonal.Application.DrivingPorts;
+using Eventify.Hexagonal.Application.DrivingPorts.Participation;
 using Eventify.Hexagonal.Application.Models;
 
-namespace Eventify.Hexagonal.Application.UseCases;
+namespace Eventify.Hexagonal.Application.UseCases.Participation;
 
 internal class JoinEventUseCase(IEventRepository eventRepository) 
     : IJoinEventUseCase

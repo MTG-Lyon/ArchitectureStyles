@@ -6,9 +6,9 @@ namespace Eventify.Hexagonal.Application.DrivenPorts;
 
 public interface IEventRepository
 {
-    Task<Event> Get(Guid eventId);
-    Task Save(Event @event);
-    Task<IReadOnlyCollection<EventListItemDto>> GetAll();
     Task<bool> Exists(string name);
+    Task<Event> Get(Guid eventId);
     Task<EventDetailsDto> GetDetails(Guid eventId);
+    Task<IReadOnlyCollection<EventListItemDto>> GetAll();
+    Task Save(Event @event);
 }

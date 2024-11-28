@@ -14,7 +14,7 @@ public class RouteConfigurator(WebApplication app)
 
     private void MapPostEvent() =>
         app.MapPost("/events", async (
-                [FromServices] CreateNewEventUserCase useCase,
+                [FromServices] CreateNewEventUseCase useCase,
                 [FromBody] CreateNewEventBody body
             )
             =>

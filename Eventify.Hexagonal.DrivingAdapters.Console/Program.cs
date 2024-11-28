@@ -1,48 +1,63 @@
 ﻿using Eventify.Hexagonal.Application;
 using Eventify.Hexagonal.Application.DrivingPorts;
-using Eventify.Hexagonal.Application.Models.Exceptions;
+using Eventify.Hexagonal.Application.DrivingPorts.Administration;
+using Eventify.Hexagonal.Application.Models.Exceptions.Base;
 using Eventify.Hexagonal.DrivenAdapters.InMemory;
 using Microsoft.Extensions.DependencyInjection;
 
 var services = new ServiceCollection();
 
-services
+var provider = services
     .RegisterApplication()
-    .RegisterInMemoryDatabase();
+    .RegisterInMemoryDatabase()
+    .BuildServiceProvider();
 
-var serviceProvider = services.BuildServiceProvider();
-
-var createUseCase = serviceProvider.GetRequiredService<IRegisterEventUseCase>();
-var listUseCase = serviceProvider.GetRequiredService<IListAllEventsUseCase>();
+var createUseCase = provider.GetRequiredService<IRegisterEventUseCase>();
+var listUseCase = provider.GetRequiredService<IListAllEventsUseCase>();
 
 while (true)
 {
-    Console.WriteLine();
-    Console.Write("Enter the name of the event > ");
-    
-    var name = Console.ReadLine();
-    
-    if (string.IsNullOrWhiteSpace(name))
-    {
-        break;
-    }
-
     try
     {
-        await createUseCase.Register(name);
+        Console.WriteLine();
+        Console.Write("Enter your command > ");
+
+        var command = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(command))
+        {
+            break;
+        }
+        
+        var parameters = ParseCommand(command);
+
+        var action = parameters.ActionName switch
+        {
+            "create" => createUseCase.Register(parameters.Value),
+            _ => Task.CompletedTask
+        };
+
+        await action;
+
+        var events = await listUseCase.ListAll();
+
+        Console.WriteLine("All events are: ");
+
+        foreach (var @event in events)
+        {
+            Console.WriteLine("- " + @event.Name);
+        }
     }
-    catch (EventWithSameNameAlreadyExistsException)
+    catch (Exception e) when (e is IDomainException)
     {
-        Console.WriteLine("The event name is already taken, please choose another name.");
-        continue;
+        Console.WriteLine(e.Message);
     }
-    
-    var events = await listUseCase.ListAll();
-    
-    Console.WriteLine("All events are: ");
-    
-    foreach (var @event in events)
-    {
-        Console.WriteLine("- " + @event.Name);
-    }
+}
+
+(string ActionName, string Value) ParseCommand(string command)
+{
+    var parts = command.Split(" ");
+    var actionName = parts.First();
+    var value = string.Join(" ", parts.Skip(1));
+    return (actionName, value);
 }

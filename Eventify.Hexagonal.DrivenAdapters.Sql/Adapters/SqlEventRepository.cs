@@ -18,12 +18,12 @@ public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
             .Include(x => x.Participants)
             .Include(x => x.Comments)
             .SingleOrDefaultAsync(x => x.Id == eventId);
-        
+
         if (entity is null)
         {
             throw new EntityNotFoundException($"The event with id {eventId} was not found");
         }
-        
+
         return Event.Rehydrate(
             entity.Id,
             new EventName(entity.Name),
@@ -51,7 +51,8 @@ public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
                     .OrderBy(c => c.Date)
                     .ToList()
             ))
-            .SingleOrDefaultAsync() ?? throw new EntityNotFoundException($"The event with id {eventId} was not found");
+            .SingleOrDefaultAsync()
+        ?? throw new EntityNotFoundException($"The event with id {eventId} was not found");
 
     public async Task Save(Event @event)
     {
@@ -70,7 +71,7 @@ public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
             };
             dbContext.Events.Add(existing);
         }
-        
+
         existing.Name = @event.Name.Value;
         existing.Description = @event.Description;
         existing.Status = @event.Status.ToString();
@@ -84,6 +85,7 @@ public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
     private static void UpdateComments(Event @event, EventEntity existing)
     {
         existing.Comments.Clear();
+        
         foreach (var comment in @event.Comments)
         {
             var commentEntity = new CommentEntity
@@ -92,7 +94,7 @@ public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
                 Commenter = comment.Commenter.EmailAddress.Value,
                 Comment = comment.Comment
             };
-            
+
             existing.Comments.Add(commentEntity);
         }
     }
@@ -100,13 +102,14 @@ public class SqlEventRepository(EventifyDbContext dbContext) : IEventRepository
     private static void UpdateParticipants(Event @event, EventEntity existing)
     {
         existing.Participants.Clear();
+        
         foreach (var participant in @event.Participants)
         {
             var participantEntity = new ParticipantEntity
             {
                 EmailAddress = participant.EmailAddress.Value
             };
-            
+
             existing.Participants.Add(participantEntity);
         }
     }

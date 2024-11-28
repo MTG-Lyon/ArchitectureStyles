@@ -1,9 +1,9 @@
 using Eventify.Hexagonal.Application.DrivenPorts;
-using Eventify.Hexagonal.Application.DrivingPorts;
+using Eventify.Hexagonal.Application.DrivingPorts.Administration;
 using Eventify.Hexagonal.Application.Models;
 using Eventify.Hexagonal.Application.Models.Exceptions;
 
-namespace Eventify.Hexagonal.Application.UseCases;
+namespace Eventify.Hexagonal.Application.UseCases.Administration;
 
 internal class RegisterANewEventUseCase(
     IEventRepository eventRepository

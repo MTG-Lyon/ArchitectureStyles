@@ -1,7 +1,7 @@
 using Eventify.Hexagonal.Application.DrivenPorts;
-using Eventify.Hexagonal.Application.DrivingPorts;
+using Eventify.Hexagonal.Application.DrivingPorts.Administration;
 
-namespace Eventify.Hexagonal.Application.UseCases;
+namespace Eventify.Hexagonal.Application.UseCases.Administration;
 
 internal class PublishEventUseCase(IEventRepository eventRepository) : IPublishEventUseCase
 {

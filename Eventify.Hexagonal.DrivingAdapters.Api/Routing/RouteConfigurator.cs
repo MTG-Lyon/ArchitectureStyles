@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Eventify.Hexagonal.Application.DrivingPorts;
+using Eventify.Hexagonal.Application.DrivingPorts.Administration;
+using Eventify.Hexagonal.Application.DrivingPorts.Participation;
 using Eventify.Hexagonal.Application.Models.Exceptions;
 using Eventify.Hexagonal.Application.Models.Exceptions.Base;
 using Eventify.Hexagonal.DrivenAdapters.Sql.Adapters;

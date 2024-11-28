@@ -1,4 +1,4 @@
-namespace Eventify.Clean.Entities;
+namespace Eventify.Clean.Domain;
 
 public interface IEventRepository
 {

@@ -1,5 +1,9 @@
 ﻿using Eventify.Hexagonal.Application.DrivingPorts;
+using Eventify.Hexagonal.Application.DrivingPorts.Administration;
+using Eventify.Hexagonal.Application.DrivingPorts.Participation;
 using Eventify.Hexagonal.Application.UseCases;
+using Eventify.Hexagonal.Application.UseCases.Administration;
+using Eventify.Hexagonal.Application.UseCases.Participation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Eventify.Hexagonal.Application;

@@ -1,10 +1,10 @@
-using Eventify.Clean.Entities;
-using Event = Eventify.Clean.Entities.Event;
-using EventName = Eventify.Clean.Entities.EventName;
+using Eventify.Clean.Domain;
+using Event = Eventify.Clean.Domain.Event;
+using EventName = Eventify.Clean.Domain.EventName;
 
 namespace Eventify.Clean.Application.Events;
 
-public class CreateNewEventUserCase(IEventRepository repository)
+public class CreateNewEventUseCase(IEventRepository repository)
 {
     public async Task CreateNewEvent(string eventName)
     {

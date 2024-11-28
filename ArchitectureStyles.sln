@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.Clean.Presentation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.Clean.Application", "Eventify.Clean.Application\Eventify.Clean.Application.csproj", "{0CBF4C97-BA70-45BC-A638-E07EF14FD4CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.Clean.Entities", "Eventify.Clean.Entities\Eventify.Clean.Entities.csproj", "{61342011-A8DC-45A3-B77C-83875FAA74AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.Clean.Domain", "Eventify.Clean.Domain\Eventify.Clean.Domain.csproj", "{61342011-A8DC-45A3-B77C-83875FAA74AD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventify.Clean.Infrastructure", "Eventify.Clean.Infrastructure\Eventify.Clean.Infrastructure.csproj", "{1CF61283-AC5C-4B1B-90C6-95EE132AE704}"
 EndProject
