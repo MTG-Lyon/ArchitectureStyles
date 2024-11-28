@@ -10,7 +10,7 @@ public class TestApplication(
     ErrorDriver errorDriver
 )
 {
-    private const string TestServerName = "Clean";
+    private static readonly Type TestServerToUse = typeof(HexagonalTestServer);
     
     private TestHttpClient? _client;
     private ITestServer? _testServer;
@@ -43,7 +43,7 @@ public class TestApplication(
     {
         foreach (var testServer in AllTestServers)
         {
-            if (testServer.Name == TestServerName)
+            if (testServer.GetType() == TestServerToUse)
             {
                 return testServer;
             }

@@ -44,17 +44,12 @@ public class HexagonalTestServer(
         return ActivatorUtilities.CreateInstance<DelegateLoggerProvider>(serviceProvider, action);
     }
 
-    public string Name => "Hexagonal";
-
     public Task Initialize()
     {
         _ = Server;
 
         return Task.CompletedTask;
     }
-
-    public T GetService<T>() where T : notnull =>
-        Services.GetRequiredService<T>();
 
     public void OverrideCurrentDate(DateTime now) =>
         Services.GetRequiredService<IClock>().Now().Returns(now);
