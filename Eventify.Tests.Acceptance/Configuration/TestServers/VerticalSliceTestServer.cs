@@ -1,6 +1,6 @@
 using Eventify.VerticalSlice;
 using Eventify.VerticalSlice.Shared.Domain;
-using Eventify.VerticalSlice.UseCases.CommentEvent;
+using Eventify.VerticalSlice.Slices.CommentEvent;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;

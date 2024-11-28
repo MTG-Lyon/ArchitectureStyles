@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Eventify.Infrastructure.Database;
-using Eventify.VerticalSlice.UseCases;
+using Eventify.VerticalSlice.Slices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +10,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddProblemDetails();
 
 builder.Services
-    .RegisterUserCases()
+    .RegisterUseCases()
     .RegisterDatabase();
 
 builder.Services

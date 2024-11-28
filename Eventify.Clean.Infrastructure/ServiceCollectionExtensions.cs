@@ -1,4 +1,5 @@
-﻿using Eventify.Clean.Domain;
+﻿using Eventify.Clean.Application;
+using Eventify.Clean.Domain;
 using Eventify.Infrastructure.Database;
 using Microsoft.Extensions.DependencyInjection;
 

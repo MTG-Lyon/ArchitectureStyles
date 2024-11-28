@@ -1,15 +1,16 @@
 using Eventify.Infrastructure.Database.Database;
 using Eventify.VerticalSlice.Shared.Domain;
+using Eventify.VerticalSlice.Slices.CreateNewEvent;
 using Microsoft.EntityFrameworkCore;
 
 namespace Eventify.VerticalSlice.Shared.Infrastructure;
 
 public class SqlEventRepository(EventifyDbContext dbContext) : 
-    UseCases.CreateNewEvent.IEventRepository,
-    UseCases.DescribeEvent.IEventRepository, 
-    UseCases.JoinEvent.IEventRepository, 
-    UseCases.PublishEvent.IEventRepository, 
-    UseCases.CommentEvent.IEventRepository
+    IEventRepository,
+    Slices.DescribeEvent.IEventRepository, 
+    Slices.JoinEvent.IEventRepository, 
+    Slices.PublishEvent.IEventRepository, 
+    Slices.CommentEvent.IEventRepository
 {
     public async Task<Event> Get(Guid eventId)
     {

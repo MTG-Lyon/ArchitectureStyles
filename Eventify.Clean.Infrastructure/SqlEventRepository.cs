@@ -1,3 +1,4 @@
+using Eventify.Clean.Application;
 using Eventify.Clean.Domain;
 using Eventify.Infrastructure.Database.Database;
 using Microsoft.EntityFrameworkCore;
