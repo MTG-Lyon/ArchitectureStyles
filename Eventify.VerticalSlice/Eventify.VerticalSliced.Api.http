@@ -1,6 +1,0 @@
-@Eventify.VerticalSliced.Api_HostAddress = http://localhost:5037
-
-GET {{Eventify.VerticalSliced.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
