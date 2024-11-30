@@ -1,5 +1,4 @@
 ﻿using Eventify.Hexagonal.Application;
-using Eventify.Hexagonal.Application.DrivenPorts;
 using Eventify.Hexagonal.Application.DrivingPorts;
 using Eventify.Hexagonal.Application.DrivingPorts.Administration;
 using Eventify.Hexagonal.Application.Models.Exceptions.Base;

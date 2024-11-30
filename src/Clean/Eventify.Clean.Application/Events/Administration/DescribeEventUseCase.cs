@@ -1,5 +1,3 @@
-using Eventify.Clean.Domain;
-
 namespace Eventify.Clean.Application.Events.Administration;
 
 public class DescribeEventUseCase(IEventRepository eventRepository)
