@@ -10,7 +10,7 @@ public class TestApplication(
     ErrorDriver errorDriver
 )
 {
-    private static readonly Type TestServerToUse = typeof(HexagonalTestServer);
+    private static readonly Type TestServerToUse = typeof(VerticalSliceTestServer);
     
     private TestHttpClient? _client;
     private ITestServer? _testServer;

@@ -1,4 +1,5 @@
 ﻿using Eventify.Hexagonal.Application;
+using Eventify.Hexagonal.Application.DrivenPorts;
 using Eventify.Hexagonal.Application.DrivingPorts;
 using Eventify.Hexagonal.Application.DrivingPorts.Administration;
 using Eventify.Hexagonal.Application.Models.Exceptions.Base;
@@ -33,7 +34,7 @@ while (true)
 
         var action = parameters.ActionName switch
         {
-            "create" => createUseCase.Register(parameters.Value),
+            "register" => createUseCase.Register(parameters.Value),
             _ => Task.CompletedTask
         };
 

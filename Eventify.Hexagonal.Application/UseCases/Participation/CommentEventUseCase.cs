@@ -24,7 +24,7 @@ internal class CommentEventUseCase(IEventRepository repository, IClock clock, IE
         await SendEmails(commenter, @event, eventComment);
     }
     
-    private Task SendEmails(string commenter, Event @event, EventComment eventComment)
+    private async Task SendEmails(string commenter, Event @event, EventComment eventComment)
     {
         var emailsToSend = @event.Participants
             .Where(x => x != eventComment.Commenter)
@@ -38,9 +38,7 @@ internal class CommentEventUseCase(IEventRepository repository, IClock clock, IE
 
         foreach (var email in emailsToSend)
         {
-            emailSender.Send(email);
+            await emailSender.Send(email);
         }
-        
-        return Task.CompletedTask;
     }
 }

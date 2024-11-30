@@ -1,4 +1,4 @@
-using Eventify.VerticalSlice.Shared.Infrastructure;
+using Eventify.Infrastructure.Database.Database;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eventify.VerticalSlice.Slices.DescribeEvent;
@@ -6,28 +6,22 @@ namespace Eventify.VerticalSlice.Slices.DescribeEvent;
 [ApiController]
 [Route("events")]
 [Produces("application/json")]
-public class Controller(IEventRepository eventRepository) : ControllerBase
+public class Controller(EventifyDbContext dbContext) : ControllerBase
 {
     [HttpPut("{eventId}/describe")]
     public async Task<IActionResult> CreateNewEvent([FromRoute] Guid eventId, [FromBody] Body body)
     {
-        try
+        var @event = await dbContext.Events.FindAsync(eventId);
+        
+        if(@event is null)
         {
-            var @event = await eventRepository.Get(eventId);
+            return NotFound();
+        }
 
-            @event.Describe(body.Description);
-
-            await eventRepository.Save(@event);
-            
-            return Ok();
-        }
-        catch (EntityNotFoundException e)
-        { 
-            return Problem(statusCode: 404, title: e.Message);
-        }
-        catch (ArgumentException e)
-        {
-            return Problem(statusCode: 403, title: e.Message);
-        }
+        @event.Description = body.Description;
+        
+        await dbContext.SaveChangesAsync();
+        
+        return Ok();
     }
 }

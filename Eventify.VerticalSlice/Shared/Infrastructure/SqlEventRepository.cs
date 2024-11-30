@@ -7,7 +7,6 @@ namespace Eventify.VerticalSlice.Shared.Infrastructure;
 
 public class SqlEventRepository(EventifyDbContext dbContext) : 
     IEventRepository,
-    Slices.DescribeEvent.IEventRepository, 
     Slices.JoinEvent.IEventRepository, 
     Slices.PublishEvent.IEventRepository, 
     Slices.CommentEvent.IEventRepository
