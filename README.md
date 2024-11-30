@@ -4,6 +4,8 @@ Ce repository est le code source utilisé pour la présentation du MTG du 30 nov
 
 Il décrit le même périmètre fonctionnel dans plusieurs styles d'architecture.
 
+![Slide de présentation](./resources/cover.png)
+
 ## Hexagonal
 
 Présente l'architecture ports et adapter selon le standard proposé d'Alistair Cockburn (son créateur).
