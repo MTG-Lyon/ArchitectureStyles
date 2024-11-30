@@ -35,6 +35,14 @@ Présente la vertical slice architecture de Jimmy Bogard.
 - Découpage par fonctionnalité
 - Abstraction introduite uniquement si besoin
 
+## Projet de test d'acceptation
+
+Des tests d'acceptation sont présents pour tester les différentes architectures et s'assurer que le périmètre fonctionnel est iso.
+
+Vous pouvez configurer le projet sur lequel lancer les tests en modifiant la constante `TestServerToUse` dans le fichier [TestApplication](./src/Shared/Eventify.Tests.Acceptance/Configuration/TestApplication.cs).
+
+    private static readonly Type TestServerToUse = typeof(VerticalSliceTestServer) // or typeof(HexagonalTestServer) or typeof(CleanTestServer)
+
 # Points volontairement non abordés
 
 Pour rester focus sur l'objectif du talk de présenter les différentes architectures, les points suivants ont volontairement été mis de côté :
